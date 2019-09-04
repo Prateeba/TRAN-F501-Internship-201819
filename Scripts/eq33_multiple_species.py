@@ -64,45 +64,27 @@ class Eq_33(object):
 				if (SUM > R2A0) : 
 					if (MU == 1) :
 						self.X -= 1 
-						#self.x_graph.update("-", 1, MU, self.T)
-						
 						self.Y += 1 
-						#self.y_graph.update("+", 1, MU, self.T)
 
 					if (MU == 2) : 
 						self.X += 1
-						#self.x_graph.update("+", 1, MU, self.T)
-						
 						self.Y -= 1 
-						#self.y_graph.update("-", 1, MU, self.T)
 					
 					if (MU == 3) : 
 						self.X -= 2 
-						#self.x_graph.update("-", 2, MU, self.T)
-						
 						self.Z += 1 
-						#self.z_graph.update("+", 1, MU, self.T)
 					
 					if (MU == 4) :
 						self.X += 2 
-						#self.x_graph.update("+", 2, MU, self.T)
-						
-						self.Z -= 1
-						#self.z_graph.update("-", 1, MU, self.T) 
+						self.Z -= 1 
 					
 					if (MU == 5) :
 						self.X += 1 
-						#self.x_graph.update("+", 1, MU, self.T)
-
 						self.W -= 1 
-						#self.w_graph.update("-", 1, MU, self.T)
 					
 					if (MU == 6) :
 						self.X -= 1 
-						#self.x_graph.update("-", 1, MU, self.T)
-
 						self.W += 1 
-						#self.w_graph.update("+", 1, MU, self.T)
 			else : 
 				# print the results
 				self.w_plot.append(self.W)
@@ -115,8 +97,6 @@ class Eq_33(object):
 		self.plot()
 		
 	def plot(self) : 
-		""" TO DO !!!! -> smooth out the plot : Maybe not necessary""" 
-
 		
 		plt.plot(self.t_plot, self.w_plot, marker='o', color='r', label='W species')
 		plt.plot(self.t_plot, self.x_plot, marker='v', color='b', label='X species')
@@ -125,27 +105,11 @@ class Eq_33(object):
 
 
 		plt.legend(loc='upper left')
-		
 		plt.ylabel("Number of molecules")
 		plt.xlabel("Time")
 
 		plt.show()
-
-	"""def plot_pseudo_dependency_graph(self) : 
-		print(self.w_graph.G.nodes(data=True))
-		print(self.x_graph.G.nodes(data=True))
-		print(self.y_graph.G.nodes(data=True))
-		print(self.z_graph.G.nodes(data=True))
-
-		self.w_graph.draw_graph()
-		self.x_graph.draw_graph()
-		self.y_graph.draw_graph()
-		self.z_graph.draw_graph()	"""
 		
-
-
-
-
 
 if __name__ == '__main__':
 	C = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
