@@ -96,7 +96,7 @@ The solution is well mixed $\rightarrow$ nonreactive collisions occur far more t
 The probability that a certain reaction $\mu$ will take place in the next instant of time $dt$ is given by $a_{\mu}dt + o(dt)$, where $a_{\mu}$ is independent of $dt$.
 \end{theorem}
 
-\subsection{The stochastic framework}
+\subsection{Step 2 : The stochastic framework}
 \begin{enumerate}
   \item We have a set of reactions
     \begin{gather}
@@ -110,7 +110,7 @@ The probability that a certain reaction $\mu$ will take place in the next instan
   \item The probability that a given molecule $A$ reacts with a given molecule $B$ in a small time $dt$ is $k_{1}dt + o(dt)$.
 \end{enumerate}
 
-\subsubsection{Gillespie's stochastic framework of chemical kinetics}
+\subsection{Step 3 : Gillespie's stochastic framework of chemical kinetics}
 The principle task is to develop a method for simulation the time evolution of the $N$ quantities $\{X_{i}\}$, knowing only their initial values $\{X_{i}^{(0)}\}$, the form of the $M$ reactions $\{R_{\mu}\}$ and the values of the reaction parameters $\{c_{\mu}\}$.
 
 \begin{defn}{Problem definition : }
@@ -141,80 +141,44 @@ The reaction parameter $c_{\mu}$ can be defined as follows :
   \begin{example} Let $S$ be the set of states $i.e$ $S = (\#A, \#B, \#C, \#D, \#E, \#F, \#G)$, $S$ will change to $S^{'} = (\#A-1, \#B-1, \#C+1, \#D, \#E, \#F, \#G)$ if Reaction $1$ is executed. The probability of this occurence is given by :
   $P(S^{'}, t + dt|S,t) = a_{1}dt + o(dt)$
   \end{example}
-
 \end{defn}
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=1\textwidth]{Images/Figure_1.png}
-\caption{The x-axis denotes the dataset used and the y-axis denotes the computation time}
-\label{fig:barplot random 50}
-\end{figure}
+\begin{example}{Generating a single sample trajectory of a chemical process
+in the stochastic framework}
+  \begin{figure}[!h]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/Figure_1.png}
+  \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules}
+  \label{fig: Single sample trajectory}
+  \end{figure}
+\end{example}
 
-\section{Gillespie's algorithm}
+\subsubsection{Gillespie's Direct Method}
+\begin{enumerate}
+  \item Probability density $P(\mu, \tau)$ that the next reaction is $\mu$ and it occurs at time $\tau \rightarrow P(\mu, \tau)d\tau = a_{\mu}exp(-\tau \sum_{j}a_{j})d\tau$.
+  \item Probability for reactions $\rightarrow Pr(Reaction = \mu) = a_{\mu} / \sum_{j}a_{j}$.
+  \item Probability distribution for times $\rightarrow P(\tau)d\tau = (\sum_{j}a_{j})exp(-\tau \sum_{j}a_{j})d\tau$.
+\end{enumerate}
+
     \begin{algorithm}[!h]                     % enter the algorithm environment
-    \caption{Gillespie's algorithm}           % give the algorithm a caption
+    \caption{Gillespie's Direct Method}           % give the algorithm a caption
     \begin{algorithmic}                       % enter the algorithmic environment
-
     \REQUIRE
     \ENSURE
 
-    \WHILE{!$($number of reactants = 0 || simulation time exceeded $)$ }
-    \STATE 1. Initialization: Initialize the number of molecules in the system, reaction constants, and random number generators.
-    \STATE 2. Monte Carlo step: Generate random numbers to determine the next reaction to occur as well as the time interval. The probability of a given reaction to be chosen is proportional to the number of substrate molecules, the time interval is exponentially distributed with mean $1/R_{TOT}$
-    \STATE 3. Update: Increase the time by the randomly generated time in Step 2. Update the molecule count based on the reaction that occurred.
+    \WHILE{!$($simulation time exceeded$)$ }
+    \STATE 1. Initialization: Set initial number of molecules in the system, set $t \leftarrow 0$.
+    \STATE 2. Calculate the propensity function, $a_{i} \forall i$.
+    \STATE 3. Choose $\mu$ according to the distribution in eq $5$.
+    \STATE 4. Choose $\tau$ according to an exponential with parameter $\sum_{j}a_{j}$ (as in eq $6$).
+    \STATE 5. Update the number of molecules to reflect execution of reaction $\mu$. Set $t \leftarrow t + \tau$.
+    \STATE 6. Go to step 2.
 
     \ENDWHILE
     \end{algorithmic}
     \end{algorithm}
 
-\section{Initial values}
 
-\begin{enumerate}
-  \item $n_{A} = n_{B} = 10$
-  \item $n_{AB} = 0 $
-  \item $t = 0$
-  \item $k_{D} = 2 $
-  \item $k_{B} = 1 $
-
-\end{enumerate}
-
-\section{Gillespie's algorithm : Simple example}
-
-\subsection{Reaction Rates}
-  \begin{enumerate}
-    \item If we consider two types of mocules : $A$ and $B$, two types of reaction can happen.
-    \begin{enumerate}
-      \item $A$ and $B$ bind together to form $AB$ dimer.
-      \item $AB$ dimers dissociates into an $A$ and a $B$ molecule.
-    \end{enumerate}
-    \item let $k_D$ be the reaction rate for a $AB$ dimer formation.
-    \item let $k_B$ be the reaction rate for a $AB$ dimer deformation.
-    \item So at a time $t$, the total reaction rate $ = k_D \cdot$ number of type $A$ molecules $\cdot$number of type $B$ molecules$ + k_B\cdot$ number of $AB$ dimers $	\Rightarrow R_{TOT} = k_{D}n_{A}n_{B} + k_{B}n_{AB}$.
-  \end{enumerate}
-
-\subsection{Time evolution}
-Two steps to perform to advance forward in time.
-\begin{enumerate}
-  \item Calculate the time to the next reaction.
-    \begin{enumerate}
-      \item Determining reaction concern predicting how much time we need to wait before a reaction happens. Since this time is unknown, it is often appropriate to think of it as a random variable having an exponential distribution.
-      \item Here the next reaction time is a random number drawn from exponential distribution function with mean $1/R_{TOT}$.
-      \item Thus we move from time $t$ to $\delta t$
-    \end{enumerate}
-
-  \item Determine the next reaction among the possible reactions.
-  \begin{enumerate}
-    \item $P(A + B  \rightarrow AB) = k_{D}n_{A}n_{B} / R_{TOT} $
-    \item $P(AB  \rightarrow A + B) = 1 - (k_{D}n_{A}n_{B} / R_{TOT}) $
-  \end{enumerate}
-  So with these two probabilities we either :
-  \begin{enumerate}
-  \item Form a dimer by reducing $n_{A}$ and $n_{B}$ by one and increase $n_{AB}$ by one.
-  \item Or dissociate an $AB$ dimer by adding one to $n_{A}$ and $n_{B}$ and minus one to $n_{AB}$
-  \end{enumerate}
-\end{enumerate}
-The Gillespie algorithm repeats these two steps as many times as needed to simulate the system for as many reactions as we want.
 
 \section{Conclusion}
 

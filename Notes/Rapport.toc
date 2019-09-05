@@ -5,11 +5,7 @@
 \contentsline {section}{\numberline {4}Fourth week (2nd-6th September)}{2}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Step 1 : Mathematical Descriptions of Chemical Processes}{2}{subsection.4.1}% 
 \contentsline {subsubsection}{\numberline {4.1.1}Hypothesis :}{2}{subsubsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.2}The stochastic framework}{3}{subsection.4.2}% 
-\contentsline {subsubsection}{\numberline {4.2.1}Gillespie's stochastic framework of chemical kinetics}{3}{subsubsection.4.2.1}% 
-\contentsline {section}{\numberline {5}Gillespie's algorithm}{4}{section.5}% 
-\contentsline {section}{\numberline {6}Initial values}{4}{section.6}% 
-\contentsline {section}{\numberline {7}Gillespie's algorithm : Simple example}{5}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}Reaction Rates}{5}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}Time evolution}{5}{subsection.7.2}% 
-\contentsline {section}{\numberline {8}Conclusion}{6}{section.8}% 
+\contentsline {subsection}{\numberline {4.2}Step 2 : The stochastic framework}{3}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Step 3 : Gillespie's stochastic framework of chemical kinetics}{3}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Gillespie's Direct Method}{4}{subsubsection.4.3.1}% 
+\contentsline {section}{\numberline {5}Conclusion}{4}{section.5}% 

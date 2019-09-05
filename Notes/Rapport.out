@@ -4,11 +4,7 @@
 \BOOKMARK [1][-]{section.4}{Fourth week \(2nd-6th September\)}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{Step 1 : Mathematical Descriptions of Chemical Processes}{section.4}% 5
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Hypothesis :}{subsection.4.1}% 6
-\BOOKMARK [2][-]{subsection.4.2}{The stochastic framework}{section.4}% 7
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Gillespie's stochastic framework of chemical kinetics}{subsection.4.2}% 8
-\BOOKMARK [1][-]{section.5}{Gillespie's algorithm}{}% 9
-\BOOKMARK [1][-]{section.6}{Initial values}{}% 10
-\BOOKMARK [1][-]{section.7}{Gillespie's algorithm : Simple example}{}% 11
-\BOOKMARK [2][-]{subsection.7.1}{Reaction Rates}{section.7}% 12
-\BOOKMARK [2][-]{subsection.7.2}{Time evolution}{section.7}% 13
-\BOOKMARK [1][-]{section.8}{Conclusion}{}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Step 2 : The stochastic framework}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Step 3 : Gillespie's stochastic framework of chemical kinetics}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Gillespie's Direct Method}{subsection.4.3}% 9
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 10
