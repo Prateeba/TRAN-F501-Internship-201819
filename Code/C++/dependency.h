@@ -1,7 +1,6 @@
 #ifndef DEF_DEPENDENCY
 #define DEF_DEPENDENCY
 #include <iostream>
-
 #include "reaction.h"
 #include <cstddef>
 #include <string>
@@ -23,7 +22,8 @@ public :
 class Dependency{ 
 	/* Take a list of reactions (which will then represent the nodes of the graph)
      * Connect each reaction/node according to the rule defined in the paper 
-	*/  
+	*/ 
+
 private : 
 	std::vector<Reaction*> reactions;    // The set of nodes
 	std::vector<Edge*> edges;            // The set of edges 

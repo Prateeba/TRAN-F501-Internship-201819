@@ -37,7 +37,7 @@ void Dependency::display_graph() {
 	// loop through the list of edges and print them off .. 
 	for(size_t i = 0; i < edges.size(); i++){
 		edges[i]->get_src()->display() ; 
-		std::cout << "======>>" ; 
+		std::cout << "\033[1;31m======>>\033[0m\n";
 		edges[i]->get_dst()->display() ; 
 	}
 }

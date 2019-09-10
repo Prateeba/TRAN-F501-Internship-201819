@@ -7,6 +7,7 @@
 
 
 int main(){
+
 	std::map<char, int> initial_values {{'A', 10},{'B', 10} ,{'C', 10} ,{'D', 10}, {'E', 10}, {'F', 10}};
 	std::vector<Reaction*> reactions ; 
 
