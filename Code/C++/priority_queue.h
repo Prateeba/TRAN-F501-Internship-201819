@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
-
+#include <queue>
 
 class Heap_node{
 private : 
@@ -16,7 +16,7 @@ private :
 	Heap_node* right ;          // right child 
 
 public :
-	Heap_node(char i, int num, double t) ; // Initialise a node object 
+	Heap_node(char i, int num, double t){id = i; reaction_number = num ; putative_time = t ;} // Initialise a node object 
 	~Heap_node() ; 
 	char get_id(){return id ;}
 	int get_reaction_number(){return reaction_number ;}
@@ -25,24 +25,25 @@ public :
 	void set_left(Heap_node* l) {left = l ;}
 	Heap_node* get_right() {return right ;}
 	void set_right(Heap_node* r) {right = r ;}
-}
+} ; 
+
+struct Comp{
+    bool operator()(Heap_node* a, Heap_node* b){
+        return a->get_putative_time() > b->get_putative_time();
+    }
+};
 
 class Priority_queue{
 private :
-	Heap_node* root ;           // technically the least putative time node -> to be initialised after having made sure that the property holds
-	char[num_reactions] ;       // index structre -> not sure about this data structure yet 
+	//char[num_reactions] ;       // index structre -> not sure about this data structure yet 
+	std::priority_queue<Heap_node*, std::vector<Heap_node*>, Comp> p_queue; 
 
 public :
 	Priority_queue(std::vector<Heap_node*>) ; // take as input all putative time converted into heap_nodes  + also has to initialise the index structure
 	~Priority_queue() ; 
-	void build() ;   //
-	void swap(Heap_node*, Heap_node*) ;
-	Heap_node* find_min() ;  
-	
-	void update() ;                       // to do                     
-	void update_aux() ;                   // to do 
+	Heap_node* get_min() ;  
 
-}
+} ; 
 
 
 
