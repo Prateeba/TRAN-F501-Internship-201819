@@ -113,5 +113,5 @@ class Eq_33(object):
 
 if __name__ == '__main__':
 	C = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
-	eq33 = Eq_33(C, 6, 0, 1, 1, 1, 1, 20, 0.5)
+	eq33 = Eq_33(C, 6, 0, 10, 10, 10, 10, 20, 0.5)
 	eq33.simulate()
