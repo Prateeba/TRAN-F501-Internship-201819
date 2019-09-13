@@ -7,10 +7,11 @@
 #include <iterator>
 
 
-Reaction::Reaction(std::vector<char> r, std::vector<char> p, int react_param) {
+Reaction::Reaction(std::vector<char> r, std::vector<char> p, int react_param, int i) {
 	reactants = r ; 
 	products = p ; 
 	k = react_param ; 
+	id = i ; 
 }
 void Reaction::display(){ 
 	for(size_t i = 0; i < reactants.size()-1; i++){

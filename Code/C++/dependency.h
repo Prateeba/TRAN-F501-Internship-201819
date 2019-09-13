@@ -1,9 +1,12 @@
 #ifndef DEF_DEPENDENCY
 #define DEF_DEPENDENCY
-#include <iostream>
 #include "reaction.h"
+#include "p_queue.h"
+#include "rangen.h"
+#include <iostream>
 #include <cstddef>
 #include <string>
+#include <limits>
 #include <vector>
 #include <map>
 
@@ -34,6 +37,8 @@ public :
 	void add_edge_to_graph(Reaction*, Reaction*) ;  
 	void delete_edge(Reaction*, Reaction*) ; 
 	void display_graph() ; 
+	void update_outgoing_edges(int, int, std::map<char, int>, Priority_queue::P_queue<int, double>, RanGen&) ; 
+
 } ; 
 
 

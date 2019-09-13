@@ -38,8 +38,12 @@ namespace Priority_queue{
 			/* */
 			int size() {return heap.size() ;}
 
+			std::vector<int> get_id() {return id ;}
+
+			std::vector<P_queue_node<Key, Priority>> get_heap() {return heap ;}
+
 			/* Add an element to the heap*/
-			void push(const Key& key, const Priority& priority) {int n = heap.size(); id[key] = n ; heap.emplace_back(key, priority) ;}
+			void push(const Key& key, const Priority& priority) {int n = heap.size(); id[key-1] = n ; heap.emplace_back(key, priority) ;}
 			
 			/* Find the reaction which has the minimum putative time */
 			const P_queue_node<Key, Priority>& top() { std::make_heap (heap.begin(),heap.end()); return heap.front() ;}
@@ -49,6 +53,19 @@ namespace Priority_queue{
 				int heap_index = id[key] ;   // the index at which the object is stored in the heap 
 				Priority p = heap[heap_index].priority ; 
 				heap[heap_index].priority = new_priority ; 
+
+			}
+
+			void display_index_structure() {
+				for(size_t i = 0; i < id.size(); i++){
+					std::cout << "Reaction |" << i << "| is stored at index |" << id[i] <<"| of the heap"<< std::endl ; 					
+				}
+			}
+
+			void display_heap(){
+				for(size_t i = 0; i < heap.size(); i++){
+					std::cout << "At index |" << i << "| Reaction num : |" << heap[i].key << "| putative time " << heap[i].priority << std::endl ;   
+				}
 			}
 
 		private : 
