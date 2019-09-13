@@ -10,7 +10,7 @@
 
 int main(){
 
-	/*std::map<char, int> initial_values {{'A', 10},{'B', 10} ,{'C', 10} ,{'D', 10}, {'E', 10}, {'F', 10}};
+	std::map<char, int> initial_values {{'A', 10},{'B', 10} ,{'C', 10} ,{'D', 10}, {'E', 10}, {'F', 10}};
 	std::vector<Reaction*> reactions ; 
 
 	std::vector<char> r = {'A','B'} ; 
@@ -40,7 +40,7 @@ int main(){
 	reactions.push_back(r5) ;     
 
 	Dependency* graph = new Dependency(reactions) ; 
-	graph->display_graph() ;  */
+	graph->display_graph() ;  
 
 	/*std::vector<Heap_node*> heap_nodes ; 
 	Heap_node* n = new Heap_node('A', 8, 1.3) ; 
@@ -58,7 +58,7 @@ int main(){
 
 	Priority_queue::P_queue<int, double> p_q(5) ; 
 	p_q.push(5, 1.4) ; 
-	p_q.push(1, 2.3) ; 
+	p_q.push(1, 2.8) ; 
 	p_q.push(2, 3.4) ; 
 	p_q.push(3, 2.4) ; 
 
