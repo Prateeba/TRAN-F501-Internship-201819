@@ -53,7 +53,7 @@ template <typename Key, typename Priority> class Priority_queue {
 			
 			/* Return the priority of a given key */
 			Priority get_priority(const Key& key) {
-				if(key >= id_to_heappos.size()) {
+				if(key <= id_to_heappos.size()) {
 					size_t pos = id_to_heappos[key];
 					if(pos >= 0) {
 						return heap[pos].priority ;
@@ -94,6 +94,12 @@ template <typename Key, typename Priority> class Priority_queue {
 					return true;
 				}
 				return false;
+			}
+
+			void display_heap() {
+				for(size_t i = 0; i < heap.size(); i++){
+					std::cout << "Reaction : " << heap[i].key << " Putative time " << heap[i].priority << std::endl ; 
+				}
 			}
 		private:
 			void extend_ids(Key k) {

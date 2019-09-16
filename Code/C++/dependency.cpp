@@ -42,34 +42,26 @@ void Dependency::display_graph() {
 	}
 }
 
-void Dependency::update_outgoing_edges(int t, int mu, std::map<char, int> initial_values, Priority_queue<int, double> p_q, RanGen& ran) {
-	/*std::vector<Edge*> temp ; 
+void Dependency::update_outgoing_edges(int t, int mu, std::map<char, int> initial_values, Priority_queue<int, double>& p_q, RanGen& ran) {
 	for(size_t i = 0; i < edges.size(); i++){
-		
 		if (edges[i]->get_src()->get_id() == mu) {
 			Reaction* r = edges[i]->get_dst() ; 
 			int a_new = r->calculate_propensity_function(initial_values) ; 
+			// TO DO -> update a_alpha which is not done 
 			
-			int id_outgoing_edges = r->get_id() ; 
-			std::cout << "outgoing edges id : " << id_outgoing_edges << std::endl ; 
+			int id_outgoing_edge = r->get_id() ; 
 			double t_alpha = std::numeric_limits<double>::infinity(); 
 			
-			if (id_outgoing_edges != mu) {
-				double a_old = p_q.get_heap()[p_q.get_id()[id_outgoing_edges]-1].priority ; 
+			if (id_outgoing_edge != mu) {
+				double a_old = p_q.get_priority(id_outgoing_edge) ; 
 				t_alpha  = (a_old/a_new)*(t_alpha - t) + t ;   
-				std::cout << "t_alpha check != mu " << t_alpha << std::endl ; 
 			} 
 
-			
-			else if (r->get_id() == mu ) {
+			else if (id_outgoing_edge == mu ) {
 				double random_number = ran.randouble() ; 
-				t_alpha = random_number + t ; 
-				std::cout << "t_alpha check == mu " << t_alpha << std::endl ; 
+				t_alpha = random_number + t ;
 			}
-
-			p_q.update(id_outgoing_edges, t_alpha) ; 
-
+			p_q.update(id_outgoing_edge, t_alpha) ; 
 		}
-
-	}*/
+	}
 }

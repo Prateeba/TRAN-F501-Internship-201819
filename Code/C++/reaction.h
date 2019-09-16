@@ -22,6 +22,8 @@ public :
 	void display_with_k() ;
 	void display_vector(std::vector<char>) ; 
 	int get_id() {return id ;}
+	std::vector<char> get_reactants() {return reactants ;}
+	std::vector<char> get_products() {return products ;}
 	int calculate_propensity_function(std::map<char, int>) ; // a_i
 	std::vector<char> depends_on() ;                        // Only the set of reactants 
 	std::vector<char> affects() ;                           // 

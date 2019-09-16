@@ -37,7 +37,7 @@ public :
 	void add_edge_to_graph(Reaction*, Reaction*) ;  
 	void delete_edge(Reaction*, Reaction*) ; 
 	void display_graph() ; 
-	void update_outgoing_edges(int, int, std::map<char, int>, Priority_queue<int, double>, RanGen&) ; 
+	void update_outgoing_edges(int, int, std::map<char, int>, Priority_queue<int, double>&, RanGen&) ; 
 
 } ; 
 
