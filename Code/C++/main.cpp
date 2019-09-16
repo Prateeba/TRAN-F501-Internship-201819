@@ -39,21 +39,28 @@ int main(){
 	reactions.push_back(r5) ;     
 
 	Dependency* graph = new Dependency(reactions) ; 
-	Priority_queue::P_queue<int, double> p_q(5) ; 
+	
+	Priority_queue<int, double> p_q ; 
 	p_q.push(0, 11.3) ; 
 	p_q.push(1, 2.8) ; 
 	p_q.push(2, 3.4) ; 
 	p_q.push(3, 2.4) ; 
 	p_q.push(4, 2.04) ; 
+	p_q.update(4, 2.01) ; 
 
 	RanGen ran;
 	
-	p_q.display_index_structure() ; 
-	p_q.display_heap() ; 
+	//p_q.display_index_structure() ; 
+	//p_q.display_heap() ; 
 
-	Priority_queue::P_queue_node<int, double> res = p_q.top() ; 
+	Priority_queue_node<int, double> res = p_q.top() ; 
 	std::cout <<"Reaction number : " << res.key << " | Least putative time : " << res.priority <<  std::endl ; 
+	p_q.pop_value() ; 
 
+	Priority_queue_node<int, double> res1 = p_q.top() ;
+	std::cout <<"Reaction number : " << res1.key << " | Least putative time : " << res1.priority <<  std::endl ; 
+
+	
 	/*graph->update_outgoing_edges(1, 5, initial_values, p_q, ran) ; 
 	Priority_queue::P_queue_node<int, double> res = p_q.top() ; 
 	std::cout <<"Reaction number : " << res.key << " | Least putative time : " << res.priority <<  std::endl ; */
