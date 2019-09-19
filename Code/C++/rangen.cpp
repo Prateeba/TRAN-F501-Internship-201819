@@ -20,11 +20,11 @@ RanGen::RanGen(){
 
         fileout <<rng_seed<<std::endl;
         fileout.close();
-        std::cout <<"#seed.in not found. Creating a new seed: "<<rng_seed<<std::endl;
+        //std::cout <<"#seed.in not found. Creating a new seed: "<<rng_seed<<std::endl;
     }
     else
     {
-        std::cout<<"#reading seed.in"<<std::endl;
+        //std::cout<<"#reading seed.in"<<std::endl;
         filein >> rng_seed;
         fileout <<rng_seed<<std::endl;
 

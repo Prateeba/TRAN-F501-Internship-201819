@@ -44,24 +44,6 @@ int main(){
 	Next_reaction_method* n = new Next_reaction_method(reactions) ; 	
 	n->simulate(initial_values, ran) ; 
 	n->display_tau() ; 
-
-
-
-	/*Dependency* graph = new Dependency(reactions) ; 
-	
-	Priority_queue<int, double> p_q ; 
-	p_q.push(1, 11.3) ; 
-	p_q.push(2, 2.8) ; 
-	p_q.push(3, 3.4) ; 
-	p_q.push(4, 2.4) ; 
-	p_q.push(5, 2.04) ;  */
-
-	 
-
-	//Priority_queue_node<int, double> res = p_q.top() ;     // get the least putative time node|reaction 
-	//graph->update_outgoing_edges(1, res.key, initial_values, p_q, ran) ; // update outgoing edges according to the paper 
-
-	//p_q.display_heap() ; 
 	
 	return 0 ; 
 }
