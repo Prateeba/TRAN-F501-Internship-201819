@@ -94,7 +94,7 @@ class Eq_33(object):
 				self.t_plot.append(self.TPRINT) 
 
 				self.TPRINT += self.TINT
-		self.plot()
+		#self.plot()
 		
 	def plot(self) : 
 		
@@ -109,9 +109,48 @@ class Eq_33(object):
 		plt.xlabel("Time")
 
 		plt.show()
+	
+	def get_t_plot(self) : 
+		return self.t_plot 
+	def get_w_plot(self) : 
+		return self.w_plot
+	def get_x_plot(self) :
+		return self.x_plot
+	def get_y_plot(self) :
+		return self.y_plot
+	def get_z_plot(self) :
+		return self.z_plot   
 		
+def probability_distribution() : 
+	number_of_runs = 1000
+	Y_samples = [0]*number_of_runs
+	sample_time = 0.5 
+
+	C = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+	for i in range(len(Y_samples)) : 
+		eq33 =  Eq_33(C, 6, 0, 10, 10, 10, 10, 0.5, 0.1)
+		eq33.simulate()
+		Y_samples[i] = eq33.get_w_plot() 
+		print(eq33.get_w_plot())
+		print(i)
+
+	num_bins = 5
+	n, bins, patches = plt.hist(Y_samples[0], num_bins, facecolor='blue', alpha=0.5)
+	plt.show()
+
+	
+	#n, bins, patches = plt.hist(Y_samples, facecolor='blue',alpha=0.5)
+	#plt.show()
+
+
+
 
 if __name__ == '__main__':
 	C = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
-	eq33 = Eq_33(C, 6, 0, 10, 10, 10, 10, 20, 0.5)
+	eq33 = Eq_33(C, 6, 0, 10, 10, 10, 10, 0.5, 0.1)
 	eq33.simulate()
+
+
+	probability_distribution() 
+
+	
