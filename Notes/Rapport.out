@@ -2,9 +2,12 @@
 \BOOKMARK [1][-]{section.2}{First 2 weeks \(12th-23rd August\)}{}% 2
 \BOOKMARK [1][-]{section.3}{Third week \(26th-31st August\)}{}% 3
 \BOOKMARK [1][-]{section.4}{Fourth week \(2nd-6th September\)}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Step 1 : Mathematical Descriptions of Chemical Processes}{section.4}% 5
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Hypothesis :}{subsection.4.1}% 6
-\BOOKMARK [2][-]{subsection.4.2}{Step 2 : The stochastic framework}{section.4}% 7
-\BOOKMARK [2][-]{subsection.4.3}{Step 3 : Gillespie's stochastic framework of chemical kinetics}{section.4}% 8
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Gillespie's Direct Method}{subsection.4.3}% 9
-\BOOKMARK [1][-]{section.5}{Conclusion}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Gillespie's stochastic framework of chemical kinetics}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Gillespie's Direct Method}{section.4}% 6
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Gillespie's Direct Method formulas}{subsection.4.2}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Gillespie's Direct Method : Pseudo code}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.4}{Gillespie's Direct Method : Example}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.5}{Gillespie's Direct Method : Implementation}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Fourth week \(9th-20th September\)}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Gillespie's Next Reaction Method}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 13

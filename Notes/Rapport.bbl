@@ -1,3 +1,30 @@
-\begin{thebibliography}{}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{MKA{\etalchar{+}}16}
+
+\bibitem[GB00]{gibson_efficient_2000}
+Michael~A. Gibson and Jehoshua Bruck.
+\newblock Efficient {Exact} {Stochastic} {Simulation} of {Chemical} {Systems}
+  with {Many} {Species} and {Many} {Channels}.
+\newblock {\em The Journal of Physical Chemistry A}, 104(9):1876--1889, March
+  2000.
+
+\bibitem[Gil76]{gillespie_general_1976}
+Daniel~T Gillespie.
+\newblock A general method for numerically simulating the stochastic time
+  evolution of coupled chemical reactions.
+\newblock {\em Journal of Computational Physics}, 22(4):403--434, December
+  1976.
+
+\bibitem[JSMI12]{jonsson_monte_2012}
+Sigurður~Ægir Jónsson, Iskra Staneva, Sandipan Mohanty, and Anders Irbäck.
+\newblock Monte {Carlo} {Studies} of {Protein} {Aggregation}.
+\newblock {\em Physics Procedia}, 34:49--54, 2012.
+
+\bibitem[MKA{\etalchar{+}}16]{meisl_molecular_2016}
+Georg Meisl, Julius~B Kirkegaard, Paolo Arosio, Thomas C~T Michaels, Michele
+  Vendruscolo, Christopher~M Dobson, Sara Linse, and Tuomas P~J Knowles.
+\newblock Molecular mechanisms of protein aggregation from global fitting of
+  kinetic models.
+\newblock {\em Nature Protocols}, 11(2):252--272, February 2016.
 
 \end{thebibliography}
