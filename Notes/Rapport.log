@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.5.29)  23 SEP 2019 14:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.5.29)  24 SEP 2019 11:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -563,27 +563,27 @@ Package: parskip 2019-01-16 v2.0c non-zero parskip adjustments
 \c@theorem=\count283
  (./Rapport.aux
 
-LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+LaTeX Warning: Label `fig: sample trajectory' multiply defined.
 
 )
 \openout1 = `Rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
 \AtBeginShipoutBox=\box51
-Package hyperref Info: Link coloring OFF on input line 66.
+Package hyperref Info: Link coloring OFF on input line 65.
  (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -592,9 +592,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count284
 )
-LaTeX Info: Redefining \ref on input line 66.
-LaTeX Info: Redefining \pageref on input line 66.
-LaTeX Info: Redefining \nameref on input line 66.
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
  (./Rapport.out) (./Rapport.out)
 \@outlinefile=\write3
 \openout3 = `Rapport.out'.
@@ -668,7 +668,7 @@ Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 \Gin@req@height=\dimen171
 \Gin@req@width=\dimen172
 ) (./cover.tex
-<Images/ulblogo.jpg, id=56, 1250.6725pt x 1250.6725pt>
+<Images/ulblogo.jpg, id=72, 1250.6725pt x 1250.6725pt>
 File: Images/ulblogo.jpg Graphic file (type jpg)
 <use Images/ulblogo.jpg>
 Package pdftex.def Info: Images/ulblogo.jpg  used on input line 8.
@@ -680,29 +680,22 @@ Package pdftex.def Info: Images/ulblogo.jpg  used on input line 8.
 \tf@toc=\write4
 \openout4 = `Rapport.toc'.
 
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
-Make it at least 13.59999pt.
-We now make it that large for the rest of the document.
-This may cause the page layout to be inconsistent, however.
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.70 
+l.69 
       [1] [2]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 126.
+put line 125.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/Figure_1.png, id=110, 1156.32pt x 587.5551pt>
+<Images/Figure_1.png, id=131, 1156.32pt x 587.5551pt>
 File: Images/Figure_1.png Graphic file (type png)
 <use Images/Figure_1.png>
-Package pdftex.def Info: Images/Figure_1.png  used on input line 146.
+Package pdftex.def Info: Images/Figure_1.png  used on input line 145.
 (pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -714,79 +707,118 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
                                                   \fi \fi 
 l.166 
        <./Images/Figure_1.png>]
-<Images/Figure_1_Next_reaction.png, id=155, 1156.32pt x 587.5551pt>
-File: Images/Figure_1_Next_reaction.png Graphic file (type png)
-<use Images/Figure_1_Next_reaction.png>
-Package pdftex.def Info: Images/Figure_1_Next_reaction.png  used on input line 
-212.
-(pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/Figure_5_Next_reaction.png, id=156, 1156.32pt x 587.5551pt>
+<Images/Figure_1_Next_reaction.png, id=180, 1156.32pt x 587.5551pt>
+File: Images/Figure_1_Next_reaction.png Graphic file (type png)
+<use Images/Figure_1_Next_reaction.png>
+Package pdftex.def Info: Images/Figure_1_Next_reaction.png  used on input line 
+214.
+(pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Images/Figure_5_Next_reaction.png, id=181, 1156.32pt x 587.5551pt>
 File: Images/Figure_5_Next_reaction.png Graphic file (type png)
 <use Images/Figure_5_Next_reaction.png>
 Package pdftex.def Info: Images/Figure_5_Next_reaction.png  used on input line 
 221.
 (pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
-[5] [6pdfTeX warning (ext4): destination with the same identifier (name{figure.
-2}) has been already used, duplicate ignored
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5]
+<Images/Figuur2.pdf, id=203, 794.97pt x 614.295pt>
+File: Images/Figuur2.pdf Graphic file (type pdf)
+<use Images/Figuur2.pdf>
+Package pdftex.def Info: Images/Figuur2.pdf  used on input line 243.
+(pdftex.def)             Requested size: 426.79135pt x 329.80219pt.
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.229 \newpage
-              pdfTeX warning (ext4): destination with the same identifier (name
-{figure.3}) has been already used, duplicate ignored
+l.247     \item S
+                 elf assembly phenomenon. \ref{fig:amyloid stacking} <./Images/
+Figure_1_Next_reaction.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Images/amyloidstacking_2.png, id=229, 154.176pt x 58.0569pt>
+File: Images/amyloidstacking_2.png Graphic file (type png)
+<use Images/amyloidstacking_2.png>
+Package pdftex.def Info: Images/amyloidstacking_2.png  used on input line 250.
+(pdftex.def)             Requested size: 426.79135pt x 160.73328pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.229 \newpage
-               <./Images/Figure_1_Next_reaction.png> <./Images/Figure_5_Next_re
-action.png>] (./Rapport.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
+l.265 \clearpage
+                 <./Images/Figure_5_Next_reaction.png>] [8pdfTeX warning (ext4)
+: destination with the same identifier (name{figure.4}) has been already used, 
+duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.265 \clearpage
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.265 \clearpage
+                 <./Images/Figuur2.pdf> <./Images/amyloidstacking_2.png>]
+(./Rapport.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
+ [9
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
  (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 43186D252523C4F07E9759A27585BED1;981.
+(rerunfilecheck)             Checksum: 78CF4EA01953304166D3D60D7A6EF951;1390.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 234.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
  ) 
 Here is how much of TeX's memory you used:
- 18234 strings out of 492616
- 311796 string characters out of 6135177
- 409571 words of memory out of 5000000
- 21883 multiletter control sequences out of 15000+600000
- 546836 words of font info for 51 fonts, out of 8000000 for 9000
+ 18270 strings out of 492616
+ 312400 string characters out of 6135177
+ 412100 words of memory out of 5000000
+ 21899 multiletter control sequences out of 15000+600000
+ 546010 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,11n,65p,913b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,19n,65p,913b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 mi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/s
-fbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></u
-sr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-
-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type
-1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-sup
-er/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb
-></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/te
-xmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texmf-dist/fonts/
-type1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm
--super/sfti1200.pfb>
-Output written on Rapport.pdf (8 pages, 737568 bytes).
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+bx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></us
+r/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-d
+ist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1
+/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
+r/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb>
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/tex
+mf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
+super/sfti1200.pfb>
+Output written on Rapport.pdf (10 pages, 2550529 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 245 compressed objects within 3 object streams
- 86 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2466 PDF objects out of 2487 (max. 8388607)
+ 1500 compressed objects within 15 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 167 words of extra memory for PDF output out of 10000 (max. 10000000)
 

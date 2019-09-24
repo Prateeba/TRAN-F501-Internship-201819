@@ -19,7 +19,7 @@
 
 \usepackage{geometry}%réglages mise en page
 \usepackage{fancyhdr}%for headers and footers
-\pagestyle{fancy}
+
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{optidef} %formules d'optimisation
@@ -46,8 +46,7 @@
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 % ------ ADD SUBSUBSECITONS ------
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
 
 % ------ PAGE LAYOUT ------
 \geometry{
@@ -88,7 +87,7 @@ The goal of this week was to implement a simple prototype (in python for now) of
 The principle task is to develop a method for simulating the time evolution of the $N$ quantities $\{X_{i}\}$, knowing only their initial values $\{X_{i}^{(0)}\}$, the form of the $M$ reactions $\{R_{\mu}\}$ and the values of the reaction parameters $\{c_{\mu}\}$.
 
 \begin{defn}{Problem definition:}
-We are given a volume $V$ containing molecules of $N$ chemically active species $S_{i}(i = 1, \dots, N)$. Let $X_{i} \equiv$ current number of molecules of chemical species $S_{i} \in V, (i = 1, 2, \dots, N)$ and let $R_{\mu} (\mu = 1, \dots, M)$ be the chemical reactions in which the species $S_{i}$ can participate where each reaction $R_{\mu}$ is characterized by a numerical reaction parameter $c_{\mu}$ and let $R$ be the different type of reactions :
+We are given a volume $V$ containing molecules of $N$ chemically active species $S_{i}(i = 1, \dots, N)$. Let $X_{i} \equiv$ current number of molecules of chemical species $S_{i} \in V, (i = 1, 2, \dots, N)$ and let $R_{\mu} (\mu = 1, \dots, M)$ be the chemical reactions in which the species $S_{i}$ can participate. Each reaction $R_{\mu}$ is characterized by a numerical reaction parameter $c_{\mu}$ and let $R$ be the different type of reactions :
 \begin{gather}
   {* \rightarrow reaction products}  \\
   {S_{j} \rightarrow reaction products} \\
@@ -97,7 +96,7 @@ We are given a volume $V$ containing molecules of $N$ chemically active species 
   {S_{i} + S_{j} + S_{k} \rightarrow reaction products}\\
   {S_{j} + 2S_{k} \rightarrow reaction products} \\
   {3S_{j} \rightarrow reaction products}
-\end{gather} , the goal is to simulate the trajectories of the $N$ chemically active species $S_i.$ and predict which reaction will occur at each time step according to the correct probability distribution.
+\end{gather}, the goal is to simulate the trajectories of the $N$ chemically active species $S_i$ and predict which reaction will occur at each time step according to the correct probability distribution.
 \end{defn}
 
 \begin{hyp}{}
@@ -116,22 +115,22 @@ Given the problem defined above, the Gillespie's Direct Method answers two quest
 
   \subsubsection{Gillespie's Direct Method formulas}
   \begin{enumerate}
-    \item Probability density $P(\mu, \tau)$ that the next reaction is $\mu$ and it occurs at time $\tau \rightarrow P(\mu, \tau)d\tau = a_{\mu}exp(-\tau \sum_{j}a_{j})d\tau$.
-    \item Probability for reactions $\rightarrow Pr(Reaction = \mu) = a_{\mu} / \sum_{j}a_{j}$.
-    \item Probability distribution for times $\rightarrow P(\tau)d\tau = (\sum_{j}a_{j})exp(-\tau \sum_{j}a_{j})d\tau$.
+    \item Probability density $P(\mu, \tau)$ that the next reaction is $\mu$ and it occurs at time $\tau \rightarrow P(\mu, \tau)d\tau = a_{\mu}exp(-\tau \sum_{j}a_{j})d\tau$. \label{itm:(eq 1)}
+    \item Probability for reactions $\rightarrow Pr(Reaction = \mu) = a_{\mu} / \sum_{j}a_{j}$. \label{itm:(eq 2)}
+    \item Probability distribution for times $\rightarrow P(\tau)d\tau = (\sum_{j}a_{j})exp(-\tau \sum_{j}a_{j})d\tau$.\label{itm:(eq 3)}
   \end{enumerate}
 
 \subsection{Gillespie's Direct Method : Pseudo code} \ref{alg:Gillespie's Direct Method}
 \begin{algorithm}[!h]                     % enter the algorithm environment
 \caption{Gillespie's Direct Method}       % give the algorithm a caption
 \begin{algorithmic}                       % enter the algorithmic environment
-\REQUIRE $N$ chemically active species $S_i, \{X_{i}^{(0)}\}$ initial values of each specie $S_i$, the set $R$ of chemical reactions and the reaction parameter $c_{\mu}$ for each reaction.
+\REQUIRE $N$ chemically active species $S_i, \{X_{i}^{(0)}\}$ initial values of each species $S_i$, the set $R$ \hspace*{8mm} of chemical reactions and the reaction parameter $c_{\mu}$ for each reaction.
 \ENSURE Sample trajectory of a chemical process in the stochastic framework.
 \WHILE{!$($simulation time exceeded$)$ }
     \STATE 1. Initialization: Set initial number of molecules in the system, set $t \leftarrow 0$.
-    \STATE 2. Calculate the propensity function, $a_{i} \forall i$.
-    \STATE 3. Choose $\mu$ according to the distribution in eq $5$.
-    \STATE 4. Choose $\tau$ according to an exponential with parameter $\sum_{j}a_{j}$ (as in eq $6$).
+    \STATE 2. Calculate the propensity function, $a_{i},  \forall i$.
+    \STATE 3. Choose $\mu$ according to the distribution in \ref{itm:(eq 2)}.
+    \STATE 4. Choose $\tau$ according to an exponential with parameter $\sum_{j}a_{j}$ as in \ref{itm:(eq 3)}.
     \STATE 5. Update the number of molecules to reflect execution of reaction $\mu$. Set $t \leftarrow t + \tau$.
     \STATE 6. Go to step 2.
 \ENDWHILE
@@ -140,93 +139,130 @@ Given the problem defined above, the Gillespie's Direct Method answers two quest
 \end{algorithm}
 
 \subsection{Gillespie's Direct Method : Example}
-\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework.}
+\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework : Direct Method }
     \begin{figure}[!h]
     \centering
     \includegraphics[width=1\textwidth]{Images/Figure_1.png}
-    \caption{The x-axis denotes the duration time of the simulation and the y-axis denotes the number of molecules of each species $S_{i}$}
+    \caption{The x-axis denotes the duration time of the simulation and the y-axis denotes the number of molecules of each species $S_{i}$ at each time step.}
     \label{fig: Single sample trajectory}
     \end{figure}
 \end{example}
 
 \subsection{Gillespie's Direct Method : Implementation}
-The source code of the simple simulation model can be found at To do -> put github link. The reaction set is the example used in Gillespie's paper \cite{gillespie_general_1976}.
+The source code of the simple simulation model can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_first_reaction}{Direct-method-github}. The reaction set is the example used in Gillespie's paper \cite{gillespie_general_1976}.
 \begin{gather}
-  {X \rightarrow Y}      \\
-  {Y \rightarrow X}      \\
-  {2X \rightarrow Z}     \\
-  {Z \rightarrow 2x}     \\
-  {W + X \rightarrow 2X} \\
-  {2X \rightarrow W + X}
-\end{gather} and the reaction parameter $c_{\mu}$ is chosen randomly.
+  {X \xrightarrow{c_{1}} Y}      \\
+  {Y \xrightarrow{c_{2}} X}      \\
+  {2X \xrightarrow{c_{3}} Z}     \\
+  {Z \xrightarrow{c_{4}} 2X}     \\
+  {W + X \xrightarrow{c_{5}} 2X} \\
+  {2X \xrightarrow{c_{6}} W + X}
+\end{gather}
+The reaction parameter $c_{\mu}$ is chosen randomly and the initial number of each species is $= 1$.
 
-\section{Fourth week (9th-20th September)}
+\section{Fifth week (9th-20th September)}
 \subsection{Gillespie's Next Reaction Method}
-The goal of those two weeks was to implement the Gillespie Next reaction method in order to be able to consider bigger systems. The main idea behind the Next Reaction method to generate a putative time $\tau_i$ for each reaction $i$ to occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next reaction method is implemented using specific data structures.
+The goal of those two weeks was to implement the Gillespie Next Reaction Method in order to be able to consider larger systems. The main idea behind the Next Reaction Method is to generate a putative time $\tau_i$ for each reaction $i$ to occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next Reaction Method is implemented using specific data structures.
 
 \begin{defn}
-Let Reactants($\rho$) and Products($\rho$) be the sets of reactants and products of a reaction $\rho$.
+Let Reactants($\rho$) and Products($\rho$) be the set of reactants and products respectively of a reaction $\mu$.
 \end{defn}
 
-\begin{defn} Let $a_{\mu}$ be the value computed by the propensity function and DependsOn($a_{\mu}$) be the set of substances that affects the value $a_{\mu}$
+\begin{defn} Let $a_{\mu}$ be the value computed by the propensity function and DependsOn($a_{\mu}$) be the set of substances that affects the value $a_{\mu}$.
 \end{defn}
 
 \begin{defn} Let Affects($\mu$) be the set of substances that are affected if reaction $\mu$ occurs.
 \end{defn}
 
-\begin{defn} Given a set of reactions $R$, the graph $G = G(V, E)$ is a directed graph where $V$ is the set of Reactions and there exists an edge from $v_i$ to $v_j$ if and only if  Affects($v_i$) $\cap$ DependsOn($a_{v_{j}}$) $\neq \emptyset$. $G$ is then referred to as the dependency graph of the set of reactions $R$ and is useful to know which $a_is$ to change when a given reaction occurs.
+\begin{defn} \cite{gibson_efficient_2000} Given a set of reactions $R$, the graph $G = G(V, E)$ is a directed graph where $V$ is the set of reactions and there exists an edge from $v_i$ to $v_j$ if and only if  Affects($v_i$) $\cap$ DependsOn($a_{v_{j}}$) $\neq \emptyset$. $G$ is then referred to as the dependency graph of the set of reactions $R$ and precise exactly which $a_is$ to change when a given reaction occurs.
 \end{defn}
 
-\begin{defn} Indexed prioroty Queues. To do -> definition
+\begin{defn} Indexed priority Queues : An indexed priority queue is a generic priority queue with random access to its elements through an index structure.
 \end{defn}
 
-\begin{algorithm}[!h]                     % enter the algorithm environment
+\subsection{Gillespie's Next Reaction Method : Pseudo code} \ref{alg:Gillespie's Next Reaction Method}
+\begin{algorithm}[!h]                            % enter the algorithm environment
 \caption{Gillespie's Next Reaction Method}       % give the algorithm a caption
-\begin{algorithmic}                       % enter the algorithmic environment
-\REQUIRE $N$ chemically active species $S_i, \{X_{i}^{(0)}\}$ initial values of each specie $S_i$, the set $R$ of chemical reactions and the reaction parameter $c_{\mu}$ for each reaction.
+\begin{algorithmic}                              % enter the algorithmic environment
+\REQUIRE $N$ chemically active species $S_i, \{X_{i}^{(0)}\}$ initial values of each species $S_i$, the set $R$ of \hspace*{8mm} chemical reactions and the reaction parameter $c_{\mu}$ for each reaction.
 \ENSURE Sample trajectory of a chemical process in the stochastic framework.
 \WHILE{!$($simulation time exceeded$)$ }
     \STATE 1. Initialization :
-      \STATE \ \ \ 1.1  \ Set initial number of molecules, set $t \leftarrow 0$, generate a dependency graph $G$.
-      \STATE \ \ \ 1.2. Calculate the propensity function, $a_{i} \forall i$.
-      \STATE \ \ \ 1.3. For each $i$, generate a putative time, $\tau_{i}$, according to an exponential
+      \STATE \ \ \ 1.1  \ set initial number of molecules, set $t \leftarrow 0$, generate a dependency graph $G$.
+      \STATE \ \ \ 1.2. calculate the propensity function, $a_{i} ,  \forall i$.
+      \STATE \ \ \ 1.3. for each $i$, generate a putative time, $\tau_{i}$, according to an exponential
       \STATE \ \ \ \ \ \ \ \ \ distribution with parameter $a_{i}$.
-      \STATE \ \ \ 1.4. Store the $\tau_{i}$ values in an indexed priority queue $P.$
+      \STATE \ \ \ 1.4. store the $\tau_{i}$ values in an indexed priority queue $P.$
     \STATE 2. Let $\mu$ be the reaction whose putative time, $\tau_{\mu}$, is least.
     \STATE 3. Let $\tau$ be $\tau_{\mu}$.
     \STATE 4. Update the number of molecules to reflect execution of reaction $\mu$. Set $t \leftarrow \tau$.
     \STATE 5. For each edge($\mu$, $\alpha$) in the dependency graph $G$,
-    \STATE \ \ \ \ 5.1 update $a_{\alpha}.$
+    \STATE \ \ \ 5.1 update $a_{\alpha}.$
     \STATE \ \ \ 5.2 if $\alpha \neq \mu$, set $\tau_{alpha} \leftarrow (a_{\alpha,old}/a_{\alpha, new})(\tau_{\alpha} - t) + t.$
-    \STATE \ \ \ 5.3 if $\alpha = \mu$, generate a random number, $\rho$, according to an exponential distribution
-    with parameter $a_{\mu}$ and set $\tau_{\alpha} \leftarrow \tau + t.$
+    \STATE \ \ \ 5.3 if $\alpha = \mu$, generate a random number, $\rho$, according to an exponential distribution \hspace*{8mm} with parameter $a_{\mu}$ and set $\tau_{\alpha} \leftarrow \tau + t.$
     \STATE \ \ \ 5.4 Update the old $\tau_{\alpha}$ value in $P$.
     \STATE 6. Go to step $2$.
 \ENDWHILE
 \end{algorithmic}
+\label{alg:Gillespie's Next Reaction Method}
 \end{algorithm}
 
-\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework.}
+\subsection{Gillespie's Next Reaction Method : Examples}
+\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework : Next Reaction Method.}
     \begin{figure}[!h]
     \centering
     \includegraphics[width=1\textwidth]{Images/Figure_1_Next_reaction.png}
-    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules}
+    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 1}
+    \label{fig: sample trajectory}
+    \end{figure}
+
+    \begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/Figure_5_Next_reaction.png}
+    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 2}
     \label{fig: sample trajectory}
     \end{figure}
 \end{example}
 
-\begin{example}{Generating a single sample trajectory of a chemical process in the stochastic framework.}
-    \begin{figure}[!h]
-    \centering
-    \includegraphics[width=1\textwidth]{Images/Figure_5_Next_reaction.png}
-    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules}
-    \label{fig: Single sample trajectory}
-    \end{figure}
-\end{example}
+\subsection{Gillespie's Next Reaction Method : Implementation}
+The source code Next Reaction Method can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_next_reaction}{Next-Reaction-Method-github}. The reaction set is the example used in the following paper \cite{gibson_efficient_2000}.
+\begin{gather}
+  {A + B \xrightarrow{k_{1}} C}      \\
+  {B + C \xrightarrow{k_{2}} D}      \\
+  {D + E \xrightarrow{k_{3}} E + F}     \\
+  {F \xrightarrow{k_{4}} D + G}     \\
+  {E + G \xrightarrow{k_{5}} A} \\
+\end{gather}
+The reaction parameter $k_{\mu}$ is chosen randomly and the initial number of each species is $ = 10$.
 
-\section{Conclusion}
+\subsection{Meet up with the collaborators of KU Leuven : Re-calibrate the goal}
+  \begin{enumerate}
+    \item Understanding the lag phase in the amyloid fibril formation. \ref{fig:lag phase}
+      \begin{figure}[!h]
+      \centering
+      \includegraphics[width=1\textwidth]{Images/Figuur2.pdf}
+      \caption{lag phase in the amyloid fibril formation}
+      \label{fig:lag phase}
+      \end{figure}
+    \item Self assembly phenomenon. \ref{fig:amyloid stacking}
+      \begin{figure}[!h]
+      \centering
+      \includegraphics[width=1\textwidth]{Images/amyloidstacking_2.png}
+      \caption{Amyloid stacking}
+      \label{fig:amyloid stacking}
+      \end{figure}
 
-\newpage
+    \item Finding the rate constants.
+  \end{enumerate}
+
+\section{Following weeks}
+\begin{enumerate}
+\item On the lag phase : Hypothesis.
+\item On the lag phase : Solutions.
+\item On the lag phase : Implementation of the solutions.
+\end{enumerate}
+
+\clearpage
 \bibliographystyle{alpha}
 \bibliography{combinatorial}
 

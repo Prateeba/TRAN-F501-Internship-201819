@@ -9,6 +9,10 @@
 \contentsline {subsection}{\numberline {4.3}Gillespie's Direct Method : Pseudo code}{3}{subsection.4.3}% 
 \contentsline {subsection}{\numberline {4.4}Gillespie's Direct Method : Example}{3}{subsection.4.4}% 
 \contentsline {subsection}{\numberline {4.5}Gillespie's Direct Method : Implementation}{4}{subsection.4.5}% 
-\contentsline {section}{\numberline {5}Fourth week (9th-20th September)}{5}{section.5}% 
+\contentsline {section}{\numberline {5}Fifth week (9th-20th September)}{5}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Gillespie's Next Reaction Method}{5}{subsection.5.1}% 
-\contentsline {section}{\numberline {6}Conclusion}{6}{section.6}% 
+\contentsline {subsection}{\numberline {5.2}Gillespie's Next Reaction Method : Pseudo code}{5}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Gillespie's Next Reaction Method : Examples}{5}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}Gillespie's Next Reaction Method : Implementation}{5}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {5.5}Meet up with the collaborators of KU Leuven : Re-calibrate the goal}{7}{subsection.5.5}% 
+\contentsline {section}{\numberline {6}Following weeks}{7}{section.6}% 
