@@ -49,6 +49,7 @@ std::vector<std::vector<std::string>> Parser::getData_nprot() {
 	std::string line = "";
 	
 	// Iterate through each line and split the content using delimeter
+	getline(file, line) ;
 	while (getline(file, line)){
 		std::vector<std::string> vec;
 		boost::algorithm::split(vec, line, boost::is_any_of(delimeter));

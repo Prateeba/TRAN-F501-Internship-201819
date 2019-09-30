@@ -17,7 +17,7 @@ std::vector<std::vector<double>> Fitter::normalize(std::vector<std::vector<std::
 
 	for (int i = 0; i < results.size(); i++) {
 		for (int j = 1; j < results[i].size()-1; j++) {
-			int y_norm = (1 - relative_initial_concentration)*((std::stod(results[i][j]) - baseline)/ (plateau - baseline)) + relative_initial_concentration ; 
+			double y_norm = (1 - relative_initial_concentration)*((std::stod(results[i][j]) - baseline)/ (plateau - baseline)) + relative_initial_concentration ; 
 			tmp_tmp.push_back(y_norm) ; 
 		}
 		tmp.push_back(tmp_tmp) ; 
