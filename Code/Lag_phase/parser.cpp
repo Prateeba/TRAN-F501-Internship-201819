@@ -5,24 +5,13 @@
 #include <iterator>
 #include <string>
 #include <algorithm>
+#include "parser.h"
 #include "boost/algorithm/string.hpp"
 
-/*
- * A class to read data from a csv file.
- */
-class CSVReader{
-private : 
-	std::string fileName;
-	std::string delimeter;
- 
-public:
-	CSVReader(std::string filename, std::string delm = ";"):fileName(filename), delimeter(delm) {}
-	// Function to fetch data from a CSV File
-	std::map<std::string, std::vector<std::string>> getData();
-};
-
-
-std::map<std::string, std::vector<std::string>> CSVReader::getData(){
+std::map<std::string, std::vector<std::string>> Parser::getData(){
+	/* returns a dictionary with  : 
+	   key : the time 
+	   value : a list of different concentration of protein mesured at that time */
 	std::ifstream file(fileName);
 	std::map<std::string, std::vector<std::string>> dataList;
 	std::string line = "";
@@ -51,16 +40,24 @@ std::map<std::string, std::vector<std::string>> CSVReader::getData(){
 	return dataList;
 }
 
-int main(){
-	// Creating an object of CSVWriter
-	CSVReader reader("thT_kinetics_2.csv");
- 
-	// Get the data from CSV File
-	std::map<std::string, std::vector<std::string>> dataList = reader.getData();
-
-	std::map<std::string, std::vector<std::string>>::iterator it=dataList.begin() ;
-	for (it=dataList.begin(); it!=dataList.end(); ++it)
-    	std::cout << it->first << " => " << it->second[0] << '\n'; 
+std::vector<std::vector<std::string>> Parser::getData_nprot() {
+	/* returns a dictionary with  : 
+	   key : the time 
+	   value : a list of different concentration of protein mesured at that time */
+	std::ifstream file(fileName);
+	std::vector<std::vector<std::string>> dataList;
+	std::string line = "";
 	
-	return 0;
+	// Iterate through each line and split the content using delimeter
+	while (getline(file, line)){
+		std::vector<std::string> vec;
+		boost::algorithm::split(vec, line, boost::is_any_of(delimeter));
+		dataList.push_back(vec) ; 
+	}
+
+	// Close the File
+	file.close();
+	return dataList;
 }
+
+

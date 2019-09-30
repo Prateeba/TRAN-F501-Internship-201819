@@ -10,16 +10,16 @@ def plot_data(data1, data2):
 	labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 	markers =['o', '8', '*', '^', 'P', 'd', 'X' ] 
 	
-	plt.scatter(np.log10(data1), data2, marker=markers[0])
-
+	#plt.scatter(np.log10(data1), data2, marker=markers[0])
+	plt.scatter(data1, data2, marker=markers[0])
 
 	plt.legend(loc='upper left')
 	plt.ylabel("250uM Y")
 	plt.xlabel("Time")
 
 	plt.show()
- 
-if __name__ == "__main__":
+
+def data_process() : 
 	counter = 0
 	n = 250 
 	data_time = []
@@ -28,8 +28,8 @@ if __name__ == "__main__":
 		try:
 			tmp = input().strip().split(" => ")
 			if (len(tmp) > 1) : 
- 				data_time.append(float(tmp[0]))
- 				data_elem.append(float(tmp[1])) 
+				data_time.append(float(tmp[0]))
+				data_elem.append(float(tmp[1])) 
 		except EOFError:
 			print("Input has terminated! Exiting")
 			exit()
@@ -39,3 +39,52 @@ if __name__ == "__main__":
 		counter += 1
 
 	plot_data(data_time, data_elem)
+
+
+def plot_data_nprot(data) : 
+	""" Plot raw data provided by c++ program with any preprocessing """
+
+	x = []                     # contains the time steps 
+	y = []
+	for i in range(len(data)) : 
+		x.append(data[i][0])
+
+
+	for i in range(len(data)): # contains the data   
+		data[i].pop(0)
+		y.append(data[i]) 
+
+	for xe, ye in zip(x, y):
+		plt.scatter([xe] * len(ye), ye)
+
+	plt.legend(loc='upper left')
+	plt.ylabel("uM ")
+	plt.xlabel("Time")
+
+	plt.show()
+
+def data_process_nprot() : 
+	counter = 0
+	n = 223 
+	data = []
+
+	tmp = input().strip().split(" ")
+	while counter < n:
+		try:
+			tmp = input().strip().split(" ")
+			tmp_tmp = [float(i) for i in tmp]
+			data.append(tmp_tmp)
+		except EOFError:
+			print("Input has terminated! Exiting")
+			exit()
+		except ValueError:
+			print("Invalid input, skipping.  Input was: %s"%tmp)
+			continue
+		counter += 1
+
+	plot_data_nprot(data)
+ 
+if __name__ == "__main__":
+
+	data_process_nprot()
+	
