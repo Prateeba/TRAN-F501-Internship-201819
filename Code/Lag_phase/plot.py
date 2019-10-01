@@ -67,8 +67,8 @@ def data_process_nprot() :
 	counter = 0
 	n = 223 
 	data = []
-
-	tmp = input().strip().split(" ")
+	# Header is removed when normalizing 
+	#tmp = input().strip().split(" ")
 	while counter < n:
 		try:
 			tmp = input().strip().split(" ")

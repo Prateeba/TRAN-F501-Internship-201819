@@ -14,6 +14,8 @@ private :
 public :
 	Fitter(std::vector<std::vector<std::string>> r) :results(r) {}
 	std::vector<std::vector<double>> normalize(std::vector<std::vector<std::string>>, int, int , int) ;  
+	std::vector<std::vector<double>> merge(std::vector<std::vector<double>>) ; 
+	void extract_half_time() ; 
 } ; 
 
 
