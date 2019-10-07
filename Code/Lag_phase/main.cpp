@@ -1,4 +1,5 @@
 #include <map>
+#include <Rcpp.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -7,51 +8,64 @@
 #include <algorithm>
 #include "parser.h"
 #include "fitter.h"
+#include "curve.h"
 
 
 int main(){
-	/*Parser reader("thT_kinetics_2.csv");
- 
-	std::map<std::string, std::vector<std::string>> dataList = reader.getData();
-	std::map<std::string, std::vector<std::string>>::iterator it=dataList.begin() ;
-	for (it=dataList.begin(); it!=dataList.end(); ++it)
-    	std::cout << it->first << " => " << it->second[0] << '\n'; */
 
-    // --------------- Test for the nprot ---------------------------- 
+    // --------------- Test for the nprot ---------------------------- *
+    /* Parse data file */
     Parser reader_nprot("data/nprot.2016.010-S2.csv", "\t");
     std::vector<std::vector<std::string>> dataList_nprot = reader_nprot.getData_nprot() ; 
 
-    /* plot raw data*/
-    /*for (int i = 0; i < dataList_nprot.size(); i++) {
-    	for (int j = 0; j < dataList_nprot[i].size(); j++) {
-    		std::cout << dataList_nprot[i][j] << " " ; 
+    /* Create curve objects */
+    std::vector<Curve> curves ; 
+    std::vector<double> time_steps ; 
+    for (int i = 0; i < dataList_nprot.size(); i++) {
+    	time_steps.push_back(std::stod(dataList_nprot[i][0])) ; 	
+    } 
+
+    for (int i = 1; i < dataList_nprot[i].size(); i++) {
+    	std::vector<double> tht_data ; 
+    	for (int j = 0; j < dataList_nprot.size(); j++) {
+    		tht_data.push_back(std::stod(dataList_nprot[j][i])) ; 
     	}
-    	std::cout << "\n" ; 
-    }*/
+        Curve c(time_steps, tht_data) ; 
+        curves.push_back(c) ;  
+    }
+
+    /* plot raw data -> to pipe through python script*/
+    /*for (int i = 0; i < curves.size(); i++) {
+        curves[i].display() ;   
+    }  ------- in comment but ok */
 
     /* Normalize data and plot */
-    Fitter fitter(dataList_nprot) ;  
-    std::vector<std::vector<double>> dataList_nprot_normalize = fitter.normalize(dataList_nprot,1,55,0) ; 
-
-    /*for (int i = 0; i < dataList_nprot_normalize.size(); i++) {
-        for (int j = 0; j < dataList_nprot_normalize[i].size(); j++) {
-            std::cout << dataList_nprot_normalize[i][j] << " " ; 
-        }
-        std::cout << "\n" ; 
+    Fitter fitter(curves) ; 
+    std::vector<Curve> normalized_curves = fitter.normalize(time_steps, 0, 200, 0.55) ; 
+    /*for (int i = 0; i < normalized_curves.size(); i++) {
+        normalized_curves[i].display() ;   
     }*/
 
-    /* Merge similar curves -> Repeats of the same curve */
 
-    std::vector<std::vector<double>> merged_nprot = fitter.merge(dataList_nprot_normalize) ; 
-    for (int i = 0; i < merged_nprot.size(); i++) {
+    /* Merge similar curves -> Repeats of the same curve */
+    std::vector<Curve> merged = fitter.merge(time_steps, normalized_curves, 4) ; 
+    for (int i = 0; i < merged.size(); i++) {
+        merged[i].display() ;   
+    }  
+
+
+    //std::vector<std::vector<double>> merged_nprot = fitter.merge(dataList_nprot_normalize) ; 
+    /*for (int i = 0; i < merged_nprot.size(); i++) {
         for (int j = 0; j < merged_nprot.size(); j++) {
             std::cout << merged_nprot[i][j] << " " ; 
         }
         std::cout << "\n" ; 
-    }
+    }*/
 
     /* Extract Half times*/ 
     /* Construct different models */ 
+
+
 	
 	return 0;
 }

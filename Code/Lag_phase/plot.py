@@ -9,9 +9,11 @@ def plot_data(data1, data2):
 	colors = ['r', 'b', 'm', 'g', 'c', 'y', 'k']
 	labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 	markers =['o', '8', '*', '^', 'P', 'd', 'X' ] 
-	
+
+	for i in data2 : 
+		plt.scatter(list(map(float, data1)), list(map(float, i)) , marker=markers[1])
 	#plt.scatter(np.log10(data1), data2, marker=markers[0])
-	plt.scatter(data1, data2, marker=markers[0])
+	
 
 	plt.legend(loc='upper left')
 	plt.ylabel("250uM Y")
@@ -21,15 +23,16 @@ def plot_data(data1, data2):
 
 def data_process() : 
 	counter = 0
-	n = 250 
+	n = 10
 	data_time = []
 	data_elem = []
+
 	while counter < n:
 		try:
-			tmp = input().strip().split(" => ")
-			if (len(tmp) > 1) : 
-				data_time.append(float(tmp[0]))
-				data_elem.append(float(tmp[1])) 
+			tmp = input().strip().split(" ")
+			index = tmp.index("=>")
+			data_time = tmp[0 : index]	
+			data_elem.append(tmp[index+1 :len(tmp)-1])
 		except EOFError:
 			print("Input has terminated! Exiting")
 			exit()
@@ -38,9 +41,11 @@ def data_process() :
 			continue
 		counter += 1
 
+	data_time.pop(len(data_time)-1) #!!!!!!!!!!!!!! TO CHANGE !!!!!!!!!!!!!!! 
+
 	plot_data(data_time, data_elem)
 
-
+	
 def plot_data_nprot(data) : 
 	""" Plot raw data provided by c++ program with any preprocessing """
 
@@ -65,7 +70,7 @@ def plot_data_nprot(data) :
 
 def data_process_nprot() : 
 	counter = 0
-	n = 223 
+	n = 10
 	data = []
 	# Header is removed when normalizing 
 	#tmp = input().strip().split(" ")
@@ -86,5 +91,5 @@ def data_process_nprot() :
  
 if __name__ == "__main__":
 
-	data_process_nprot()
+	data_process()
 	
