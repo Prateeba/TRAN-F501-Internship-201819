@@ -19,7 +19,9 @@ public :
 	std::vector<Curve> normalize(std::vector<double>, int, int , int) ;  
 	std::vector<Curve> merge(std::vector<double>, std::vector<Curve>, int) ; 
 	Curve compute_mean(std::vector<double>, std::vector<std::vector<double>>, int) ; 
-	void extract_half_time(Curve) ; 
+	void extract_half_time(std::vector<double> , std::vector<double> ) ; 
+	std::vector<std::vector<double>> extract_middle_part(Curve c) ; 
+
 } ; 
 
 #endif 

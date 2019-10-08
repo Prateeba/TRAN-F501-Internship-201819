@@ -8,6 +8,7 @@
 #include <string>
 #include <algorithm>
 #include "fitter.h"
+#include "linear_regression.h"
 #include "boost/algorithm/string.hpp"
 
 std::vector<Curve> Fitter::normalize(std::vector<double> time_steps, int baseline, int plateau, int relative_initial_concentration){
@@ -47,29 +48,57 @@ Curve Fitter::compute_mean(std::vector<double> time_steps, std::vector<std::vect
 		for (int i = 0; i < m.size(); i++) {
 			res += m[i][j] ; 
 		}
-		tmp.push_back(res/repeats) ; 
+		tmp.push_back((res/repeats)/10) ; 
 	} 
 	
 	Curve c(time_steps, tmp) ; 
 	return c ; 
 }
 
-void Fitter::extract_half_time(Curve c) {
-	/**
+std::vector<std::vector<double>> Fitter::extract_middle_part(Curve c) {
+	/* 
 	 * Requires to know the monomer concentration for each repeat 
 	 * Select the middle part of the curve -> Determine : 
 			1) When the average over several points is first above 0.3 
 			2) when the average is last below 0.7 
 			3) The number of points to average over depends on the number of points in the curve 
+	*/
+	std::vector<std::vector<double>> coord;  
 
+	std::vector<double> x = c.get_x_axis() ; 
+	std::vector<double> y = c.get_y_axis() ; 
+
+	std::vector<double> middle_x ; 
+	std::vector<double> middle_y ;
+	for (int i = 0; i < x.size(); i++) {
+		if (x[i] >= 0.3 && x[i] <= 0.7) {
+			middle_y.push_back(y[i]) ; 
+			middle_x.push_back(x[i]) ; 
+		}
+	} 
+	coord.push_back(middle_x) ; 
+	coord.push_back(middle_y) ; 
+	return coord ; 
+}
+
+void Fitter::extract_half_time(std::vector<double> x, std::vector<double> y) {
+	/*
 	 * Fit a straight line through the middle part of the curve 
 			1) The point at which it crosses the value 0.5 is the HALF-TIME 
 	*/
-	std::vector<double> time = c.get_x_axis() ; 
-	std::vector<double> val = c.get_y_axis() ; 
+	Linear_regression L ; 
+    std::vector<double> res = L.linear_regression(x,y,x.size()) ; 
+    
+    std::vector<double> test ;
+    test.push_back(0) ; 
+    for (int i = 0; i < x.size()-1; i++) {
+    	test.push_back(i+0.5) ; 
+    } 
+    std::vector<std::vector<double>> coords = L.get_predicted_values(test, res[0], res[1]) ; 
 
-    /*val.smoothed <- smooth.mean(val, ceiling(length(val)/100))
-    lm.D9 <- lm(val ~ time, subset=(which(0.3<=val.smoothed & val.smoothed<=0.7)))
-    return( (0.5 - lm.D9$coefficients[1]) / lm.D9$coefficients[2])*/
+    double half_time = L.get_half_time(res[0], res[1], 0.5) ; 
+
+    L.display(x, y) ;
+    L.display(coords[0], coords[1]) ; 
 
 }

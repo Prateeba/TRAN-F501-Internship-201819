@@ -1,5 +1,4 @@
 #include <map>
-#include <Rcpp.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -9,7 +8,7 @@
 #include "parser.h"
 #include "fitter.h"
 #include "curve.h"
-
+#include "linear_regression.h"
 
 int main(){
 
@@ -49,20 +48,14 @@ int main(){
 
     /* Merge similar curves -> Repeats of the same curve */
     std::vector<Curve> merged = fitter.merge(time_steps, normalized_curves, 4) ; 
-    for (int i = 0; i < merged.size(); i++) {
+    /*for (int i = 0; i < merged.size(); i++) {
         merged[i].display() ;   
-    }  
-
-
-    //std::vector<std::vector<double>> merged_nprot = fitter.merge(dataList_nprot_normalize) ; 
-    /*for (int i = 0; i < merged_nprot.size(); i++) {
-        for (int j = 0; j < merged_nprot.size(); j++) {
-            std::cout << merged_nprot[i][j] << " " ; 
-        }
-        std::cout << "\n" ; 
-    }*/
+    }*/  
 
     /* Extract Half times*/ 
+    std::vector<std::vector<double>> res = fitter.extract_middle_part(merged[0]) ; 
+    fitter.extract_half_time(res[0], res[1]) ; 
+
     /* Construct different models */ 
 
 
