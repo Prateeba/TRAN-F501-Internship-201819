@@ -11,14 +11,15 @@
 #include "linear_regression.h"
 #include "boost/algorithm/string.hpp"
 
-std::vector<Curve> Fitter::normalize(std::vector<double> time_steps, int baseline, int plateau, int relative_initial_concentration){
+std::vector<Curve> Fitter::normalize(std::vector<double> time_steps, int baseline, int relative_initial_concentration){
 	/* Raw data preprocessing phase 
 	 * Baseline value = average value of the data at the beseline 
 	 * Plateau value = average value of the data at the plateau 
 	*/
 	std::vector<Curve> normalized_curves ;  
     for (int i = 0; i < curves.size(); i++) {
-        Curve c(time_steps, curves[i].normalize(baseline, plateau, relative_initial_concentration)) ; 
+    	double y_p = curves[i].y_plateau(curves[i].get_y_axis()) ; 
+        Curve c(time_steps, curves[i].normalize(baseline, y_p, relative_initial_concentration)) ; 
         normalized_curves.push_back(c) ;  
     }
 
@@ -48,7 +49,7 @@ Curve Fitter::compute_mean(std::vector<double> time_steps, std::vector<std::vect
 		for (int i = 0; i < m.size(); i++) {
 			res += m[i][j] ; 
 		}
-		tmp.push_back((res/repeats)/10) ; 
+		tmp.push_back((res/repeats)) ; 
 	} 
 	
 	Curve c(time_steps, tmp) ; 
@@ -56,6 +57,7 @@ Curve Fitter::compute_mean(std::vector<double> time_steps, std::vector<std::vect
 }
 
 std::vector<std::vector<double>> Fitter::extract_middle_part(Curve c) {
+	// TO CHECK IF IT IS THE RIGHT WAY TO DO  .. 
 	/* 
 	 * Requires to know the monomer concentration for each repeat 
 	 * Select the middle part of the curve -> Determine : 
@@ -81,7 +83,7 @@ std::vector<std::vector<double>> Fitter::extract_middle_part(Curve c) {
 	return coord ; 
 }
 
-void Fitter::extract_half_time(std::vector<double> x, std::vector<double> y) {
+double Fitter::extract_half_time(std::vector<double> x, std::vector<double> y) {
 	/*
 	 * Fit a straight line through the middle part of the curve 
 			1) The point at which it crosses the value 0.5 is the HALF-TIME 
@@ -98,7 +100,9 @@ void Fitter::extract_half_time(std::vector<double> x, std::vector<double> y) {
 
     double half_time = L.get_half_time(res[0], res[1], 0.5) ; 
 
-    L.display(x, y) ;
-    L.display(coords[0], coords[1]) ; 
+    //L.display(x, y) ;
+    //L.display(coords[0], coords[1]) ; 
+
+    return half_time ;
 
 }

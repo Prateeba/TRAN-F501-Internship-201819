@@ -1,5 +1,5 @@
-#include<iostream>
-#include<cmath>
+#include <iostream>
+#include <cmath>
 #include <vector>
 #include "linear_regression.h"
 
@@ -45,6 +45,9 @@ std::vector<double> Linear_regression::linear_regression(std::vector<double> x,s
 
     results.push_back(slope) ; 
     results.push_back(y_intercept) ;
+
+    printf ("The linear equation that best fits the given data:\n");
+    printf ("       y = %2.8lfx + %2.8f\n", slope, y_intercept);
     return results ;
 }
 
@@ -62,8 +65,8 @@ std::vector<std::vector<double>> Linear_regression::get_predicted_values(std::ve
     return coord ;
 }
 
-double Linear_regression::get_half_time(double slope, double y_intercept, double x) {
-    double half_time = (slope*x) + y_intercept ; 
+double Linear_regression::get_half_time(double slope, double y_intercept, double y) {
+    double half_time = std::abs(y - y_intercept)/slope ; 
 
     return half_time ; 
 }
