@@ -11,14 +11,14 @@
 #include "linear_regression.h"
 #include "boost/algorithm/string.hpp"
 
-std::vector<Curve> Fitter::normalize(std::vector<double> time_steps, int baseline, int relative_initial_concentration){
+std::vector<Curve> Fitter::normalize(std::vector<double> time_steps, int baseline, int plateau, int relative_initial_concentration){
 	/* Raw data preprocessing phase 
 	 * Baseline value = average value of the data at the beseline 
 	 * Plateau value = average value of the data at the plateau 
 	*/
 	std::vector<Curve> normalized_curves ;  
     for (int i = 0; i < curves.size(); i++) {
-    	double y_p = curves[i].y_plateau(curves[i].get_y_axis()) ; 
+    	double y_p = curves[i].y_plateau(curves[i].get_y_axis(), plateau) ; 
         Curve c(time_steps, curves[i].normalize(baseline, y_p, relative_initial_concentration)) ; 
         normalized_curves.push_back(c) ;  
     }

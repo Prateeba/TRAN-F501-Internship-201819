@@ -47,14 +47,25 @@ double Curve::y_baseline(std::vector<double> y) {
 	double mean = calculate_mean(y) ; 
 	double std = standard_deviation(y, mean) ; 
 
-	return mean - std ; 
+	double min = *std::min_element(y.begin(), y.end()); 
+	
+	//return mean - std ; 
+	return min ; 
 }
 
-double Curve::y_plateau(std::vector<double> y) {
-	double mean = calculate_mean(y) ; 
+double Curve::y_plateau(std::vector<double> y, int plateau) {
+	/*double mean = calculate_mean(y) ; 
 	double std = standard_deviation(y, mean) ; 
 
-	return mean + std ; 
+	double max = *std::max_element(y.begin(), y.end()); */ 
+
+	//return mean + std ; 
+	double sum = 0; 
+	for (int i = 0; i < plateau; i++) {
+		sum += y[y.size()-i] ;  
+	}
+	sum = sum/plateau ; 
+	return sum ; 
 }
 
 void Curve::display() {

@@ -46,8 +46,8 @@ std::vector<double> Linear_regression::linear_regression(std::vector<double> x,s
     results.push_back(slope) ; 
     results.push_back(y_intercept) ;
 
-    printf ("The linear equation that best fits the given data:\n");
-    printf ("       y = %2.8lfx + %2.8f\n", slope, y_intercept);
+    //printf ("The linear equation that best fits the given data:\n");
+    //printf ("       y = %2.8lfx + %2.8f\n", slope, y_intercept);
     return results ;
 }
 

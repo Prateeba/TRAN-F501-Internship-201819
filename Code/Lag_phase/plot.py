@@ -23,7 +23,7 @@ def plot_data(data1, data2):
 
 def data_process() : 
 	counter = 0
-	n = 10
+	n = 39
 	data_time = []
 	data_elem = []
 

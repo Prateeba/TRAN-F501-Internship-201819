@@ -22,7 +22,7 @@ public :
 	std::vector<double> get_x_axis() {return x_axis ; }
 	std::vector<double> get_y_axis() {return y_axis ; }
 	double y_baseline(std::vector<double>) ; 
-	double y_plateau(std::vector<double>) ; 
+	double y_plateau(std::vector<double>, int) ; 
 	void display() ; 
 	std::vector<double> normalize(int, int, int) ; 
 
