@@ -19,8 +19,9 @@ public :
 	std::vector<Curve> normalize(std::vector<double>, int, int , int) ;  
 	std::vector<Curve> merge(std::vector<double>, std::vector<Curve>, int) ; 
 	Curve compute_mean(std::vector<double>, std::vector<std::vector<double>>, int) ;  
-	std::vector<double> half_time(std::vector<Curve>) ; 
-	
+	std::vector<double> half_time(std::vector<double> ,std::vector<Curve>) ; 
+	std::vector<std::vector<double>> log_tau_vs_log_m_concentration(std::vector<double>, std::vector<double>) ;
+	std::vector<std::vector<double>> log_tau_vs_log_m_concentration_fit(std::vector<std::vector<double>>) ; 
 } ; 
 
 #endif 

@@ -23,10 +23,9 @@ def plot_data(data1, data2):
 
 def data_process() : 
 	counter = 0
-	n = 39
+	n = 2
 	data_time = []
 	data_elem = []
-
 	while counter < n:
 		try:
 			tmp = input().strip().split(" ")

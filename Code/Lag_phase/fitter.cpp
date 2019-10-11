@@ -1,4 +1,5 @@
 #include <map>
+#include <math.h> 
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
@@ -54,10 +55,12 @@ Curve Fitter::compute_mean(std::vector<double> time_steps, std::vector<std::vect
 	return c ; 
 }
 
-std::vector<double> Fitter::half_time(std::vector<Curve> normalized_curves) {
+std::vector<double> Fitter::half_time(std::vector<double> monomer_concentration, std::vector<Curve> normalized_curves) {
 	/*
-	 * Fit a straight line through the middle part of the curve 
-			1) The point at which it crosses the value 0.5 is the HALF-TIME 
+	 Requires : 	
+	 	1) Normalized value of the ThT kinetics 
+	 	2) Monomer concentration for each repeat
+     Time at which the signal has reached its final plateau value
 	*/
     std::vector<double> half_times ;  
     for (int i = 0; i < normalized_curves.size(); i++) {
@@ -66,9 +69,50 @@ std::vector<double> Fitter::half_time(std::vector<Curve> normalized_curves) {
 
 		std::vector<double> fit_param = normalized_curves[i].fit(x,y) ;   
 		double h_time = normalized_curves[i].get_halftime(fit_param) ; 
-
-		std::cout << "Half time : " << h_time <<std::endl ; 
 		half_times.push_back(h_time) ;  	
     }
     return half_times ; 
 }
+
+std::vector<std::vector<double>> Fitter::log_tau_vs_log_m_concentration(std::vector<double> monomer_concentration, std::vector<double> half_times) {
+	/* 
+	 * Compute log (time)
+	 * Compute log (monomer concentration)
+	*/ 
+	std::vector<std::vector<double>> results ; 
+	std::vector<double> log_x ;  // x-axis = monomer concentration 
+	std::vector<double> log_y ;  // y-axis = half times 
+	if (monomer_concentration.size() == half_times.size()) {
+		for (int i = 0; i < monomer_concentration.size(); i++) {
+			log_x.push_back(log(monomer_concentration[i])) ; 
+			log_y.push_back(log(half_times[i])) ; 
+		}
+	}
+	results.push_back(log_x) ; 
+	results.push_back(log_y) ; 
+
+	for (int i = 0; i < log_x.size()-1 ; i++) {
+			std::cout << log_x[i]  << " ";  
+		}
+		std::cout << log_x[log_x.size()-1] << " => " ; 
+	
+		for (int i = 0;  i < log_y.size()-1; i++) {
+			std::cout << log_y[i] << " ";
+		}
+		std::cout << log_y[log_y.size()-1] << "\n" ; 
+	return results ; 
+}
+
+std::vector<std::vector<double>> Fitter::log_tau_vs_log_m_concentration_fit(std::vector<std::vector<double>> res) {
+	Linear_regression L ; 
+    std::vector<double> resL = L.linear_regression(res[0],res[1],res[0].size()) ;
+    std::cout << "Slope = scaling exponent " << resL[0] << std::endl ; 
+    std::cout << "y_intercept " << resL[1] << std::endl ; 
+   	std::vector<std::vector<double>> log_off_plot = L.get_predicted_values(res[0], resL[0], resL[1] ) ; 
+   	L.display(log_off_plot[0], log_off_plot[1]) ; 
+
+   	return log_off_plot ; 
+} 
+
+
+

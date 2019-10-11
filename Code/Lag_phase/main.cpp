@@ -45,11 +45,15 @@ int main(){
         normalized_curves[i].display() ;   
     }*/
 
-    std::vector<double> half_times = fitter.half_time(normalized_curves) ; 
-    
-
     /* Extract Half times*/ 
- 
+    // hypothetic monomer concentration 
+    std::vector<double> m_concentration {50, 50, 50, 50, 40, 40, 40, 40, 35, 35, 35, 35, 30, 30, 30, 30, 25, 25, 25, 25, 20, 20, 20, 20, 17, 17, 17, 17, 15, 15, 15, 15, 13, 13, 13, 13, 11, 11, 11, 11} ; 
+    std::vector<double> half_times = fitter.half_time(m_concentration, normalized_curves) ; 
+
+    /* Log(half time) versus Log(monomer concentration) plot */
+    std::vector<std::vector<double>> vs_plot = fitter.log_tau_vs_log_m_concentration(m_concentration, half_times) ;      
+    std::vector<std::vector<double>> vs_plot_fit = fitter.log_tau_vs_log_m_concentration_fit(vs_plot) ; 
+    
 
     /* Construct different models */ 
 

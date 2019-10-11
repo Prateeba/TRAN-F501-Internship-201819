@@ -12,8 +12,6 @@
 #include "linear_regression.h" 
 #include "boost/algorithm/string.hpp"
 
-
-
 double Curve::mean(std::vector<double> y, int begin, int end, int naverage){
 	double sum = 0;
 	for(int i = begin; i <= end; i++)
@@ -46,7 +44,6 @@ std::vector<double> Curve::smooth_mean(std::vector<double> vec, int naverage) {
 			}
 		}
 	}
-
 	int i = vec.size()-1 ; 
     int ni = size_nvec ; 
     if(ni < i){
