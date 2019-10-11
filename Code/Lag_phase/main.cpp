@@ -36,29 +36,20 @@ int main(){
     /* plot raw data -> to pipe through python script*/
     /*for (int i = 0; i < curves.size(); i++) {
         curves[i].display() ;   
-    }  ------- in comment but ok */
+    } */
 
     /* Normalize data and plot */
     Fitter fitter(curves) ; 
     std::vector<Curve> normalized_curves = fitter.normalize(time_steps, 0, 200, 0) ; 
-    for (int i = 0; i < normalized_curves.size(); i++) {
+    /*for (int i = 0; i < normalized_curves.size(); i++) {
         normalized_curves[i].display() ;   
-    }
+    }*/
 
-    /* Merge similar curves -> Repeats of the same curve */
-    std::vector<Curve> merged = fitter.merge(time_steps, normalized_curves, 4) ; 
-    /*for (int i = 0; i < merged.size(); i++) {
-        merged[i].display() ;   
-    }*/ 
+    std::vector<double> half_times = fitter.half_time(normalized_curves) ; 
+    
 
     /* Extract Half times*/ 
-    for (int i = 0; i < normalized_curves.size(); i++) {
-        std::vector<std::vector<double>> res = fitter.extract_middle_part(normalized_curves[i]) ; 
-        double half_time = fitter.extract_half_time(res[0], res[1]) ;
-        //std::cout << "The half - time is : " << half_time << std::endl ;
-    }
  
-     
 
     /* Construct different models */ 
 

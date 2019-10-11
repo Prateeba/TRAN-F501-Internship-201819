@@ -3,7 +3,6 @@
 #include <vector>
 #include "linear_regression.h"
 
-
 std::vector<double> Linear_regression::linear_regression(std::vector<double> x,std::vector<double> y, int dataSize){
 
     std::vector<double> results ; 
@@ -32,7 +31,6 @@ std::vector<double> Linear_regression::linear_regression(std::vector<double> x,s
         //sum of squared x
         SUMxx += x[i] * x[i];
     }
-
     //calculate the means of x and y
     AVGy = SUMy / dataSize;
     AVGx = SUMx / dataSize;
@@ -46,8 +44,6 @@ std::vector<double> Linear_regression::linear_regression(std::vector<double> x,s
     results.push_back(slope) ; 
     results.push_back(y_intercept) ;
 
-    //printf ("The linear equation that best fits the given data:\n");
-    //printf ("       y = %2.8lfx + %2.8f\n", slope, y_intercept);
     return results ;
 }
 
@@ -63,12 +59,6 @@ std::vector<std::vector<double>> Linear_regression::get_predicted_values(std::ve
     }
     coord.push_back(x_coord) ; coord.push_back(y_coord) ; 
     return coord ;
-}
-
-double Linear_regression::get_half_time(double slope, double y_intercept, double y) {
-    double half_time = std::abs(y - y_intercept)/slope ; 
-
-    return half_time ; 
 }
 
 void Linear_regression::display(std::vector<double> x_axis,std::vector<double> y_axis){

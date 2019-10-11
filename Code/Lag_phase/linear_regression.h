@@ -14,8 +14,7 @@ private :
 public : 
 	Linear_regression(){} 
 	std::vector<double> linear_regression(std::vector<double>, std::vector<double>, int) ; 
-	std::vector<std::vector<double>> get_predicted_values(std::vector<double>, double, double) ; 
-	double get_half_time(double, double, double) ; 
+	std::vector<std::vector<double>> get_predicted_values(std::vector<double>, double, double) ;  
 	void display(std::vector<double>, std::vector<double>) ; 
 } ; 
 
