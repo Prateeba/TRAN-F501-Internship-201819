@@ -34,9 +34,15 @@ int main(){
     }
 
     /* plot raw data -> to pipe through python script*/
-    /*for (int i = 0; i < curves.size(); i++) {
+    for (int i = 0; i < curves.size(); i++) {
         curves[i].display() ;   
-    } */
+    }
+
+    std::vector<std::string> header = reader_nprot.get_header() ; 
+    for (int i = 0; i < header.size(); i++) {
+    	std::cout << header[i] << " " ; 
+    }
+
 
     /* Normalize data and plot */
     Fitter fitter(curves) ; 
@@ -45,18 +51,21 @@ int main(){
         normalized_curves[i].display() ;   
     }*/
 
+    
+
     /* Extract Half times*/ 
     // hypothetic monomer concentration 
     std::vector<double> m_concentration {50, 50, 50, 50, 40, 40, 40, 40, 35, 35, 35, 35, 30, 30, 30, 30, 25, 25, 25, 25, 20, 20, 20, 20, 17, 17, 17, 17, 15, 15, 15, 15, 13, 13, 13, 13, 11, 11, 11, 11} ; 
     std::vector<double> half_times = fitter.half_time(m_concentration, normalized_curves) ; 
 
     /* Log(half time) versus Log(monomer concentration) plot */
-    std::vector<std::vector<double>> vs_plot = fitter.log_tau_vs_log_m_concentration(m_concentration, half_times) ;      
-    std::vector<std::vector<double>> vs_plot_fit = fitter.log_tau_vs_log_m_concentration_fit(vs_plot) ; 
+    std::vector<std::vector<double>> vs_plot = fitter.log_tau_vs_log_m_concentration(m_concentration, half_times) ;      // scatter points 
+    std::vector<std::vector<double>> vs_plot_fit = fitter.log_tau_vs_log_m_concentration_fit(vs_plot) ;                  // straight line fit .
+
+
+
+    /* Construct different models according to the scaling exponent and type of curvature */ 
     
-
-    /* Construct different models */ 
-
 
 	
 	return 0;

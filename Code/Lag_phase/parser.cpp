@@ -40,6 +40,21 @@ std::map<std::string, std::vector<std::string>> Parser::getData(){
 	return dataList;
 }
 
+std::vector<std::string> Parser::get_header() {
+	std::ifstream file(fileName);
+	std::vector<std::vector<std::string>> dataList;
+	std::string line = "";
+	
+	// Iterate through each line and split the content using delimeter
+	std::vector<std::string> header;
+	getline(file, line) ; 
+	boost::algorithm::split(header, line, boost::is_any_of(delimeter));
+
+	header.erase(header.begin()) ; 
+	return header ; 
+
+}
+
 std::vector<std::vector<std::string>> Parser::getData_nprot() {
 	/* returns a dictionary with  : 
 	   key : the time 
@@ -49,7 +64,8 @@ std::vector<std::vector<std::string>> Parser::getData_nprot() {
 	std::string line = "";
 	
 	// Iterate through each line and split the content using delimeter
-	getline(file, line) ;
+	
+	getline(file, line) ; 
 	while (getline(file, line)){
 		std::vector<std::string> vec;
 		boost::algorithm::split(vec, line, boost::is_any_of(delimeter));

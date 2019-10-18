@@ -91,28 +91,17 @@ std::vector<std::vector<double>> Fitter::log_tau_vs_log_m_concentration(std::vec
 	results.push_back(log_x) ; 
 	results.push_back(log_y) ; 
 
-	for (int i = 0; i < log_x.size()-1 ; i++) {
-			std::cout << log_x[i]  << " ";  
-		}
-		std::cout << log_x[log_x.size()-1] << " => " ; 
-	
-		for (int i = 0;  i < log_y.size()-1; i++) {
-			std::cout << log_y[i] << " ";
-		}
-		std::cout << log_y[log_y.size()-1] << "\n" ; 
 	return results ; 
 }
 
 std::vector<std::vector<double>> Fitter::log_tau_vs_log_m_concentration_fit(std::vector<std::vector<double>> res) {
 	Linear_regression L ; 
     std::vector<double> resL = L.linear_regression(res[0],res[1],res[0].size()) ;
-    std::cout << "Slope = scaling exponent " << resL[0] << std::endl ; 
-    std::cout << "y_intercept " << resL[1] << std::endl ; 
    	std::vector<std::vector<double>> log_off_plot = L.get_predicted_values(res[0], resL[0], resL[1] ) ; 
-   	L.display(log_off_plot[0], log_off_plot[1]) ; 
 
    	return log_off_plot ; 
 } 
 
 
 
+ 

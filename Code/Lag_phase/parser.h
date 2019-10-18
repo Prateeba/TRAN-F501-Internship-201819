@@ -21,6 +21,9 @@ public:
 	// Function to fetch data from a CSV File
 	std::map<std::string, std::vector<std::string>> getData();
 	std::vector<std::vector<std::string>> getData_nprot() ; 
+	std::vector<std::string> get_header() ; 
+
+
 };
 
 
