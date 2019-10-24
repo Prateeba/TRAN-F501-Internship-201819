@@ -21,6 +21,7 @@ class RanGen {
         int ranpoisson(double);
         double ranpoissonpdf(unsigned int, double);
         double rancauchypdf(unsigned int, double);
+        double ranexp(double) ; 
 };
 
 #endif

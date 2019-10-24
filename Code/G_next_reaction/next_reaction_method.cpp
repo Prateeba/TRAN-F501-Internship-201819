@@ -16,13 +16,16 @@ void Next_reaction_method::simulate(std::map<char, int> values, RanGen& ran) {
 	t = 0 ;                             // set start time to 0 
 	int t_end = 10 ;                    // set end time 
 	graph = new Dependency(reactions) ; // generate a dependency graph 
+	std::vector<int> a_i ; 
 
 	/* PHASE 1 */
 	for (int i = 0; i < reactions.size(); i++) {
 		// Calculate propensity function for all reactions
-		reactions[i]->calculate_propensity_function(initial_values) ;
-		// For each reaction i -> generate a putative time tau_i 
-		double p_time = ran.randouble() ; // TO CHANGE -> SOME MISUNDERSTANDING OVER HERE 
+		a_i.push_back(reactions[i]->calculate_propensity_function(initial_values)) ;
+		// For each reaction i -> generate a putative time tau_i with parameter a_i 
+		std::cout << "a_i" << a_i[i] << std::endl ; 
+		double p_time = ran.ranexp(a_i[i]) ; 
+		std::cout << "putative time " << p_time << std::endl ; 
 		// Store the p_times in the Priority queue 
 		p_q.push(i+1, p_time) ; 
 	}
@@ -36,6 +39,7 @@ void Next_reaction_method::simulate(std::map<char, int> values, RanGen& ran) {
 
 		/* PHASE 3 */
 		double tau = res.priority ; 
+		std::cout << "least putative time " << tau << std::endl ; 
 
 		/* PHASE 4 
 		 * Change the number of molecules to reflect the execution of reaction mu 

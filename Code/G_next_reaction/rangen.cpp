@@ -1,5 +1,5 @@
 #include "rangen.h"
-
+#include <math.h>       /* log */
 std::mt19937 rng_engine;
 
 RanGen::RanGen(){
@@ -67,4 +67,9 @@ int RanGen::ranpoisson(double mu){
 		
 double RanGen::ranpoissonpdf(unsigned int /*k*/, double mu){
     return ranpoisson(mu);
+}
+
+double RanGen::ranexp(double lamda) {
+    double u = randouble() ; 
+    return -log(u)/lamda ; 
 }

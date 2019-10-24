@@ -43,7 +43,7 @@ int main(){
 
 	Next_reaction_method* n = new Next_reaction_method(reactions) ; 	
 	n->simulate(initial_values, ran) ; 
-	n->display_tau() ; 
+	//n->display_tau() ; 
 	
 	return 0 ; 
 }

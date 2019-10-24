@@ -43,7 +43,7 @@ void Reaction::display_vector(std::vector<char> v) {
 	std::cout << v[v.size()-1] << "}" << std::endl ; 
 }
 
-int Reaction::calculate_propensity_function(std::map<char, int> initial_values){
+double Reaction::calculate_propensity_function(std::map<char, int> initial_values){
 	/* Doing some funny things */
 	int sum = k ; 
 	for(size_t i = 0; i < reactants.size(); i++){
