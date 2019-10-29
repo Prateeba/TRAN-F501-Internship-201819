@@ -1,4 +1,4 @@
-#include "rangen.h"
+#include "../include/rangen.h"
 #include <math.h>       /* log */
 std::mt19937 rng_engine;
 

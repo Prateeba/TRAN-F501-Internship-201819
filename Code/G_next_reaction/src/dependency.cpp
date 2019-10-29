@@ -1,4 +1,4 @@
-#include "dependency.h"
+#include "../include/dependency.h"
 #include <iostream>
 #include <cstddef>
 #include <string>
@@ -39,29 +39,5 @@ void Dependency::display_graph() {
 		edges[i]->get_src()->display() ; 
 		std::cout << "\033[1;31m======>>\033[0m\n";
 		edges[i]->get_dst()->display() ; 
-	}
-}
-
-void Dependency::update_outgoing_edges(int t, int mu, std::map<char, int> initial_values, Priority_queue<int, double>& p_q, RanGen& ran) {
-	for(size_t i = 0; i < edges.size(); i++){
-		if (edges[i]->get_src()->get_id() == mu) {
-			Reaction* r = edges[i]->get_dst() ; 
-			int a_new = r->calculate_propensity_function(initial_values) ; 
-			// TO DO -> update a_alpha which is not done 
-			
-			int id_outgoing_edge = r->get_id() ; 
-			double t_alpha = std::numeric_limits<double>::infinity(); 
-			
-			if (id_outgoing_edge != mu) {
-				double a_old = p_q.get_priority(id_outgoing_edge) ; 
-				t_alpha  = (a_old/a_new)*(t_alpha - t) + t ;   
-			} 
-
-			else if (id_outgoing_edge == mu ) {
-				double random_number = ran.randouble() ; 
-				t_alpha = random_number + t ;
-			}
-			p_q.update(id_outgoing_edge, t_alpha) ; 
-		}
 	}
 }
