@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.5.29)  24 SEP 2019 11:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.10.17)  9 NOV 2019 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -29,16 +29,16 @@ Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@posthook=\toks15
 )
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/11/13 3.27 The Babel package
+Package: babel 2019/04/03 3.29 The Babel package
 
 (/usr/share/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/11/13 3.27 Babel switching mechanism
+File: switch.def 2019/04/03 3.29 Babel switching mechanism
 )
 (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/11/13 3.27 Babel common definitions
+File: babel.def 2019/04/03 3.29 Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 
@@ -75,10 +75,6 @@ Package ifvtex Info: VTeX not detected.
 Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
@@ -392,21 +388,22 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 )
 (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2019-02-15 L3 programming layer (loader) 
+Package: expl3 2019-04-06 L3 programming layer (loader) 
 
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2019-02-15 L3 programming layer (code)
+Package: expl3 2019-04-06 L3 programming layer (code)
 \c_max_int=\count127
 \l_tmpa_int=\count128
 \l_tmpb_int=\count129
 \g_tmpa_int=\count130
 \g_tmpb_int=\count131
 \g__kernel_prg_map_int=\count132
-\c_log_iow=\count133
-\l_iow_line_count_int=\count134
-\l__iow_line_target_int=\count135
-\l__iow_one_indent_int=\count136
-\l__iow_indent_int=\count137
+\c__ior_term_ior=\count133
+\c_log_iow=\count134
+\l_iow_line_count_int=\count135
+\l__iow_line_target_int=\count136
+\l__iow_one_indent_int=\count137
+\l__iow_indent_int=\count138
 \c_zero_dim=\dimen137
 \c_max_dim=\dimen138
 \l_tmpa_dim=\dimen139
@@ -425,78 +422,78 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l_tmpb_muskip=\muskip15
 \g_tmpa_muskip=\muskip16
 \g_tmpb_muskip=\muskip17
-\l_keys_choice_int=\count138
-\l__intarray_loop_int=\count139
+\l_keys_choice_int=\count139
+\l__intarray_loop_int=\count140
 \c__intarray_sp_dim=\dimen143
-\g__intarray_font_int=\count140
-\c__fp_leading_shift_int=\count141
-\c__fp_middle_shift_int=\count142
-\c__fp_trailing_shift_int=\count143
-\c__fp_big_leading_shift_int=\count144
-\c__fp_big_middle_shift_int=\count145
-\c__fp_big_trailing_shift_int=\count146
-\c__fp_Bigg_leading_shift_int=\count147
-\c__fp_Bigg_middle_shift_int=\count148
-\c__fp_Bigg_trailing_shift_int=\count149
-\c__kernel_randint_max_int=\count150
-\g__fp_array_int=\count151
-\l__fp_array_loop_int=\count152
-\l__sort_length_int=\count153
-\l__sort_min_int=\count154
-\l__sort_top_int=\count155
-\l__sort_max_int=\count156
-\l__sort_true_max_int=\count157
-\l__sort_block_int=\count158
-\l__sort_begin_int=\count159
-\l__sort_end_int=\count160
-\l__sort_A_int=\count161
-\l__sort_B_int=\count162
-\l__sort_C_int=\count163
-\l__tl_analysis_normal_int=\count164
-\l__tl_analysis_index_int=\count165
-\l__tl_analysis_nesting_int=\count166
-\l__tl_analysis_type_int=\count167
-\l__regex_internal_a_int=\count168
-\l__regex_internal_b_int=\count169
-\l__regex_internal_c_int=\count170
-\l__regex_balance_int=\count171
-\l__regex_group_level_int=\count172
-\l__regex_mode_int=\count173
-\c__regex_cs_in_class_mode_int=\count174
-\c__regex_cs_mode_int=\count175
-\l__regex_catcodes_int=\count176
-\l__regex_default_catcodes_int=\count177
-\c__regex_catcode_D_int=\count178
-\c__regex_catcode_S_int=\count179
-\c__regex_catcode_L_int=\count180
-\c__regex_catcode_O_int=\count181
-\c__regex_catcode_A_int=\count182
-\c__regex_all_catcodes_int=\count183
-\l__regex_show_lines_int=\count184
-\l__regex_min_state_int=\count185
-\l__regex_max_state_int=\count186
-\l__regex_left_state_int=\count187
-\l__regex_right_state_int=\count188
-\l__regex_capturing_group_int=\count189
-\l__regex_min_pos_int=\count190
-\l__regex_max_pos_int=\count191
-\l__regex_curr_pos_int=\count192
-\l__regex_start_pos_int=\count193
-\l__regex_success_pos_int=\count194
-\l__regex_curr_char_int=\count195
-\l__regex_curr_catcode_int=\count196
-\l__regex_last_char_int=\count197
-\l__regex_case_changed_char_int=\count198
-\l__regex_curr_state_int=\count199
-\l__regex_step_int=\count266
-\l__regex_min_active_int=\count267
-\l__regex_max_active_int=\count268
-\l__regex_replacement_csnames_int=\count269
-\l__regex_match_count_int=\count270
-\l__regex_min_submatch_int=\count271
-\l__regex_submatch_int=\count272
-\l__regex_zeroth_submatch_int=\count273
-\g__regex_trace_regex_int=\count274
+\g__intarray_font_int=\count141
+\c__fp_leading_shift_int=\count142
+\c__fp_middle_shift_int=\count143
+\c__fp_trailing_shift_int=\count144
+\c__fp_big_leading_shift_int=\count145
+\c__fp_big_middle_shift_int=\count146
+\c__fp_big_trailing_shift_int=\count147
+\c__fp_Bigg_leading_shift_int=\count148
+\c__fp_Bigg_middle_shift_int=\count149
+\c__fp_Bigg_trailing_shift_int=\count150
+\c__kernel_randint_max_int=\count151
+\g__fp_array_int=\count152
+\l__fp_array_loop_int=\count153
+\l__sort_length_int=\count154
+\l__sort_min_int=\count155
+\l__sort_top_int=\count156
+\l__sort_max_int=\count157
+\l__sort_true_max_int=\count158
+\l__sort_block_int=\count159
+\l__sort_begin_int=\count160
+\l__sort_end_int=\count161
+\l__sort_A_int=\count162
+\l__sort_B_int=\count163
+\l__sort_C_int=\count164
+\l__tl_analysis_normal_int=\count165
+\l__tl_analysis_index_int=\count166
+\l__tl_analysis_nesting_int=\count167
+\l__tl_analysis_type_int=\count168
+\l__regex_internal_a_int=\count169
+\l__regex_internal_b_int=\count170
+\l__regex_internal_c_int=\count171
+\l__regex_balance_int=\count172
+\l__regex_group_level_int=\count173
+\l__regex_mode_int=\count174
+\c__regex_cs_in_class_mode_int=\count175
+\c__regex_cs_mode_int=\count176
+\l__regex_catcodes_int=\count177
+\l__regex_default_catcodes_int=\count178
+\c__regex_catcode_D_int=\count179
+\c__regex_catcode_S_int=\count180
+\c__regex_catcode_L_int=\count181
+\c__regex_catcode_O_int=\count182
+\c__regex_catcode_A_int=\count183
+\c__regex_all_catcodes_int=\count184
+\l__regex_show_lines_int=\count185
+\l__regex_min_state_int=\count186
+\l__regex_max_state_int=\count187
+\l__regex_left_state_int=\count188
+\l__regex_right_state_int=\count189
+\l__regex_capturing_group_int=\count190
+\l__regex_min_pos_int=\count191
+\l__regex_max_pos_int=\count192
+\l__regex_curr_pos_int=\count193
+\l__regex_start_pos_int=\count194
+\l__regex_success_pos_int=\count195
+\l__regex_curr_char_int=\count196
+\l__regex_curr_catcode_int=\count197
+\l__regex_last_char_int=\count198
+\l__regex_case_changed_char_int=\count199
+\l__regex_curr_state_int=\count266
+\l__regex_step_int=\count267
+\l__regex_min_active_int=\count268
+\l__regex_max_active_int=\count269
+\l__regex_replacement_csnames_int=\count270
+\l__regex_match_count_int=\count271
+\l__regex_min_submatch_int=\count272
+\l__regex_submatch_int=\count273
+\l__regex_zeroth_submatch_int=\count274
+\g__regex_trace_regex_int=\count275
 \c_empty_box=\box33
 \l_tmpa_box=\box34
 \l_tmpb_box=\box35
@@ -526,42 +523,127 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l_tmpb_coffin=\box44
 \g_tmpa_coffin=\box45
 \g_tmpb_coffin=\box46
+\l__coffin_bounding_shift_dim=\dimen159
+\l__coffin_left_corner_dim=\dimen160
+\l__coffin_right_corner_dim=\dimen161
+\l__coffin_bottom_corner_dim=\dimen162
+\l__coffin_top_corner_dim=\dimen163
+\l__coffin_scaled_total_height_dim=\dimen164
+\l__coffin_scaled_width_dim=\dimen165
 \c__coffin_empty_coffin=\box47
 \l__coffin_display_coffin=\box48
 \l__coffin_display_coord_coffin=\box49
 \l__coffin_display_pole_coffin=\box50
-\l__coffin_display_offset_dim=\dimen159
-\l__coffin_display_x_dim=\dimen160
-\l__coffin_display_y_dim=\dimen161
+\l__coffin_display_offset_dim=\dimen166
+\l__coffin_display_x_dim=\dimen167
+\l__coffin_display_y_dim=\dimen168
 \g__file_internal_ior=\read1
-\l__coffin_bounding_shift_dim=\dimen162
-\l__coffin_left_corner_dim=\dimen163
-\l__coffin_right_corner_dim=\dimen164
-\l__coffin_bottom_corner_dim=\dimen165
-\l__coffin_top_corner_dim=\dimen166
-\l__coffin_scaled_total_height_dim=\dimen167
-\l__coffin_scaled_width_dim=\dimen168
-\l__seq_internal_a_int=\count275
-\l__seq_internal_b_int=\count276
+\l__seq_internal_a_int=\count276
+\l__seq_internal_b_int=\count277
+\c__deprecation_minus_one=\count278
 )
 (/usr/share/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2019-02-15 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count277
+File: l3pdfmode.def 2019-04-06 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count279
 ))
-Package: xparse 2018-10-17 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count278
-\g__xparse_grabber_int=\count279
-\l__xparse_m_args_int=\count280
-\l__xparse_mandatory_args_int=\count281
-\l__xparse_v_nesting_int=\count282
+Package: xparse 2019-03-05 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count280
+\g__xparse_grabber_int=\count281
+\l__xparse_m_args_int=\count282
+\l__xparse_v_nesting_int=\count283
 )
 \widthInit=\skip75
+)
+(/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen169
+\captionmargin@=\dimen170
+\captionwidth=\dimen171
+\caption@tempdima=\dimen172
+\caption@indent=\dimen173
+\caption@parindent=\dimen174
+\caption@hangindent=\dimen175
+)
+\c@caption@flags=\count284
+\c@ContinuedFloat=\count285
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+\c@subfigure=\count286
+\c@subtable=\count287
 )
 (/usr/share/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2019-01-16 v2.0c non-zero parskip adjustments
 )
-\c@theorem=\count283
+\c@theorem=\count288
  (./Rapport.aux
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `fig: Single sample trajectory' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig: Single sample trajectory' multiply defined.
+
 
 LaTeX Warning: Label `fig: sample trajectory' multiply defined.
 
@@ -590,7 +672,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count284
+\c@section@level=\count289
 )
 LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
@@ -601,16 +683,16 @@ LaTeX Info: Redefining \nameref on input line 65.
 
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count285
-\scratchdimen=\dimen169
+\scratchcounter=\count290
+\scratchdimen=\dimen176
 \scratchbox=\box52
-\nofMPsegments=\count286
-\nofMParguments=\count287
+\nofMPsegments=\count291
+\nofMParguments=\count292
 \everyMPshowfont=\toks33
-\MPscratchCnt=\count288
-\MPscratchDim=\dimen170
-\MPnumerator=\count289
-\makeMPintoPDFobject=\count290
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen177
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
 \everyMPtoPDFconversion=\toks34
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -665,10 +747,13 @@ e
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-\Gin@req@height=\dimen171
-\Gin@req@width=\dimen172
-) (./cover.tex
-<Images/ulblogo.jpg, id=72, 1250.6725pt x 1250.6725pt>
+\Gin@req@height=\dimen178
+\Gin@req@width=\dimen179
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+ (./cover.tex
+<Images/ulblogo.jpg, id=84, 1250.6725pt x 1250.6725pt>
 File: Images/ulblogo.jpg Graphic file (type jpg)
 <use Images/ulblogo.jpg>
 Package pdftex.def Info: Images/ulblogo.jpg  used on input line 8.
@@ -687,138 +772,185 @@ been already used, duplicate ignored
 l.69 
       [1] [2]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 125.
+put line 116.
+ [3]
+<Images/w_5.png, id=173, 462.528pt x 346.896pt>
+File: Images/w_5.png Graphic file (type png)
+<use Images/w_5.png>
+Package pdftex.def Info: Images/w_5.png  used on input line 148.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 148--150
+ [][] 
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<Images/x_5.png, id=175, 462.528pt x 346.896pt>
+File: Images/x_5.png Graphic file (type png)
+<use Images/x_5.png>
+Package pdftex.def Info: Images/x_5.png  used on input line 153.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
-<Images/Figure_1.png, id=131, 1156.32pt x 587.5551pt>
-File: Images/Figure_1.png Graphic file (type png)
-<use Images/Figure_1.png>
-Package pdftex.def Info: Images/Figure_1.png  used on input line 145.
-(pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 153--155
+ [][] 
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<Images/y_5.png, id=176, 462.528pt x 346.896pt>
+File: Images/y_5.png Graphic file (type png)
+<use Images/y_5.png>
+Package pdftex.def Info: Images/y_5.png  used on input line 159.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
-[3] [4pdfTeX warning (ext4): destination with the same identifier (name{figure.
-1}) has been already used, duplicate ignored
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 159--161
+ [][] 
+ []
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.166 
-       <./Images/Figure_1.png>]
+<Images/z_5.png, id=177, 462.528pt x 346.896pt>
+File: Images/z_5.png Graphic file (type png)
+<use Images/z_5.png>
+Package pdftex.def Info: Images/z_5.png  used on input line 164.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 164--166
+ [][] 
+ []
 
-<Images/Figure_1_Next_reaction.png, id=180, 1156.32pt x 587.5551pt>
-File: Images/Figure_1_Next_reaction.png Graphic file (type png)
-<use Images/Figure_1_Next_reaction.png>
-Package pdftex.def Info: Images/Figure_1_Next_reaction.png  used on input line 
-214.
-(pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
+[4 <./Images/w_5.png> <./Images/x_5.png> <./Images/y_5.png> <./Images/z_5.png>]
+<Images/a.png, id=191, 462.528pt x 346.896pt>
+File: Images/a.png Graphic file (type png)
+<use Images/a.png>
+Package pdftex.def Info: Images/a.png  used on input line 217.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 217--219
+ [][] 
+ []
 
-<Images/Figure_5_Next_reaction.png, id=181, 1156.32pt x 587.5551pt>
-File: Images/Figure_5_Next_reaction.png Graphic file (type png)
-<use Images/Figure_5_Next_reaction.png>
-Package pdftex.def Info: Images/Figure_5_Next_reaction.png  used on input line 
-221.
-(pdftex.def)             Requested size: 426.79135pt x 216.86302pt.
+<Images/b.png, id=192, 462.528pt x 346.896pt>
+File: Images/b.png Graphic file (type png)
+<use Images/b.png>
+Package pdftex.def Info: Images/b.png  used on input line 222.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 222--224
+ [][] 
+ []
+
+<Images/c.png, id=193, 462.528pt x 346.896pt>
+File: Images/c.png Graphic file (type png)
+<use Images/c.png>
+Package pdftex.def Info: Images/c.png  used on input line 228.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
+
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 228--230
+ [][] 
+ []
+
+<Images/d.png, id=194, 462.528pt x 346.896pt>
+File: Images/d.png Graphic file (type png)
+<use Images/d.png>
+Package pdftex.def Info: Images/d.png  used on input line 233.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
+
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 233--235
+ [][] 
+ []
+
+<Images/e.png, id=195, 462.528pt x 346.896pt>
+File: Images/e.png Graphic file (type png)
+<use Images/e.png>
+Package pdftex.def Info: Images/e.png  used on input line 239.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
+
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 239--241
+ [][] 
+ []
+
+<Images/f.png, id=196, 462.528pt x 346.896pt>
+File: Images/f.png Graphic file (type png)
+<use Images/f.png>
+Package pdftex.def Info: Images/f.png  used on input line 244.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
+
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 244--246
+ [][] 
+ []
+
+<Images/g.png, id=197, 462.528pt x 346.896pt>
+File: Images/g.png Graphic file (type png)
+<use Images/g.png>
+Package pdftex.def Info: Images/g.png  used on input line 250.
+(pdftex.def)             Requested size: 234.73654pt x 176.05182pt.
+
+Overfull \hbox (21.34087pt too wide) in paragraph at lines 250--252
+ [][] 
+ []
 
 [5]
-<Images/Figuur2.pdf, id=203, 794.97pt x 614.295pt>
-File: Images/Figuur2.pdf Graphic file (type pdf)
-<use Images/Figuur2.pdf>
-Package pdftex.def Info: Images/Figuur2.pdf  used on input line 243.
-(pdftex.def)             Requested size: 426.79135pt x 329.80219pt.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
+Overfull \vbox (96.02422pt too high) has occurred while \output is active []
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.247     \item S
-                 elf assembly phenomenon. \ref{fig:amyloid stacking} <./Images/
-Figure_1_Next_reaction.png>]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<Images/amyloidstacking_2.png, id=229, 154.176pt x 58.0569pt>
-File: Images/amyloidstacking_2.png Graphic file (type png)
-<use Images/amyloidstacking_2.png>
-Package pdftex.def Info: Images/amyloidstacking_2.png  used on input line 250.
-(pdftex.def)             Requested size: 426.79135pt x 160.73328pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.265 \clearpage
-                 <./Images/Figure_5_Next_reaction.png>] [8pdfTeX warning (ext4)
-: destination with the same identifier (name{figure.4}) has been already used, 
-duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.265 \clearpage
-                pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.265 \clearpage
-                 <./Images/Figuur2.pdf> <./Images/amyloidstacking_2.png>]
-(./Rapport.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
- [9
+[6 <./Images/a.png> <./Images/b.png> <./Images/c.png> <./Images/d.png> <./Image
+s/e.png> <./Images/f.png> <./Images/g.png>]
+<Images/half_time_vs_monomer.png, id=242, 462.528pt x 346.896pt>
+File: Images/half_time_vs_monomer.png Graphic file (type png)
+<use Images/half_time_vs_monomer.png>
+Package pdftex.def Info: Images/half_time_vs_monomer.png  used on input line 27
+8.
+(pdftex.def)             Requested size: 426.79135pt x 320.11154pt.
+ [7]
+<Images/half_times_to_models.png, id=251, 781.92125pt x 561.09625pt>
+File: Images/half_times_to_models.png Graphic file (type png)
+<use Images/half_times_to_models.png>
+Package pdftex.def Info: Images/half_times_to_models.png  used on input line 28
+9.
+(pdftex.def)             Requested size: 426.79135pt x 306.258pt.
+ [8 <./Images/half_time_vs_monomer.png>] [9 <./Images/half_times_to_models.png>
+] (./Rapport.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 319.
+ [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
- (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 270.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 319.
+
+(./Rapport.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 319.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 319.
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 78CF4EA01953304166D3D60D7A6EF951;1390.
+(rerunfilecheck)             Checksum: 1AE67126D580EAE3DD54E4B5D4CF272D;1695.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 270.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 319.
  ) 
 Here is how much of TeX's memory you used:
- 18270 strings out of 492616
- 312400 string characters out of 6135177
- 412100 words of memory out of 5000000
- 21899 multiletter control sequences out of 15000+600000
+ 19496 strings out of 492623
+ 334859 string characters out of 6135668
+ 428531 words of memory out of 5000000
+ 23120 multiletter control sequences out of 15000+600000
  546010 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,19n,65p,913b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,19n,65p,936b,597s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
-bx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></us
-r/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-d
-ist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1
-/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
-r/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb>
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
-super/sfti1200.pfb>
-Output written on Rapport.pdf (10 pages, 2550529 bytes).
+/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+bx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></us
+r/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-d
+ist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1
+/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
+r/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/tex
+mf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/cm-super/sfti1200.pfb>
+Output written on Rapport.pdf (11 pages, 930772 bytes).
 PDF statistics:
- 2466 PDF objects out of 2487 (max. 8388607)
- 1500 compressed objects within 15 object streams
- 105 named destinations out of 1000 (max. 500000)
- 167 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

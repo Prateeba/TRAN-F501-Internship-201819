@@ -23,7 +23,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{optidef} %formules d'optimisation
-
+\usepackage{subcaption}
 \usepackage{parskip}
 
 \newtheorem{theorem}{Theorem}
@@ -70,40 +70,31 @@ bottom=25mm, right=25mm
 \section{Introduction}
 Diseases like Alzheimer and Parkinson disease are the result of proteins aggregating into large fractal structures that hinder the cell function or even destroy them. Understanding how aggregates are formed and change over time is important to understand when they become harmful and how maybe treatments affect aggregate formation.
 
-The goal of this Internship is to implement a simulation system to study aggregation between proteins. This work is performed in collaboration with the Switch lab in the KU Leuven, who has an extensive expertise in studying aggregation and related diseases.
+The goal of this Internship is to implement a simulation system to study aggregation between proteins and  is performed in collaboration with the Switch lab in the KU Leuven, who has an extensive expertise in studying aggregation and related diseases.
 
-\section{First 2 weeks (12th-23rd August)}
-During the first week of the Internship, I spent the first few days getting used to the work environment, did my computer and office set up, got to know my team mates and the routines (lunch time, group lunches etc) and some paperwork so that I was given access to IB2 on a daily basis.
-Once I settled down, I researched the subject and mostly did a state of the art  to have a baseline knowledge.
-
-\section{Third week (26th-31st August)}
-Having acquired a basic understanding, during the third week,  I refined my reasearch and focused on the specific papers discussing the problem in order to have a deeper understanding of the theory before starting any kind of implementation.
-The papers I focussed on are the following \cite{gillespie_general_1976}, \cite{meisl_molecular_2016}, \cite{gibson_efficient_2000}, \cite{jonsson_monte_2012}.
-
-\section{Fourth week (2nd-6th September)}
-The goal of this week was to implement a simple prototype (in python for now) of an exact numerical simulation method to simulate trajectories of discrete, stochastic systems.
-
-\subsection{Gillespie's stochastic framework of chemical kinetics}
+\subsection{Mathematical modeling}
 The principle task is to develop a method for simulating the time evolution of the $N$ quantities $\{X_{i}\}$, knowing only their initial values $\{X_{i}^{(0)}\}$, the form of the $M$ reactions $\{R_{\mu}\}$ and the values of the reaction parameters $\{c_{\mu}\}$.
+There are two fundamental approaches to the mathematical modelling of chemical reactions.
+\begin{enumerate}
+  \item Deterministic models which are based on differential equations.
+  \item Stochastic simulations where the fundametal principle is that molecular reactions are essentially random processes i.e it is impossible to say with complete certainty the time at which the next reaction will occur. This approach uses basic Newtonian physics and thermodynamics to arrive at a form defined as the propensity function that gives the probability $a_\mu$ of reaction $\mu$ occuring in time interval ($t, t+\delta t$).
+\end{enumerate}
 
+\section{Gillespie's stochastic framework of chemical kinetics}
 \begin{defn}{Problem definition:}
-We are given a volume $V$ containing molecules of $N$ chemically active species $S_{i}(i = 1, \dots, N)$. Let $X_{i} \equiv$ current number of molecules of chemical species $S_{i} \in V, (i = 1, 2, \dots, N)$ and let $R_{\mu} (\mu = 1, \dots, M)$ be the chemical reactions in which the species $S_{i}$ can participate. Each reaction $R_{\mu}$ is characterized by a numerical reaction parameter $c_{\mu}$ and let $R$ be the different type of reactions :
-\begin{gather}
-  {* \rightarrow reaction products}  \\
-  {S_{j} \rightarrow reaction products} \\
-  {S_{j} + S_{k} \rightarrow reaction products}\\
-  {2S_{j} \rightarrow reaction products} \\
-  {S_{i} + S_{j} + S_{k} \rightarrow reaction products}\\
-  {S_{j} + 2S_{k} \rightarrow reaction products} \\
-  {3S_{j} \rightarrow reaction products}
-\end{gather}, the goal is to simulate the trajectories of the $N$ chemically active species $S_i$ and predict which reaction will occur at each time step according to the correct probability distribution.
+We are given a volume $V$ containing molecules of $N$ chemically active species $S_{i}(i = 1, \dots, N)$. Let $X_{i} \equiv$ current number of molecules of chemical species $S_{i} \in V, (i = 1, 2, \dots, N)$ and let $R_{\mu} (\mu = 1, \dots, M)$ be the chemical reactions in which the species $S_{i}$ can participate. Each reaction $R_{\mu}$ is characterized by a numerical reaction parameter $c_{\mu}$. The goal is to simulate the trajectories of the $N$ chemically active species $S_i$ and predict which reaction will occur at each time step according to the correct probability distribution.
 \end{defn}
 
-\begin{hyp}{}
-The reaction parameter $c_{\mu}$ can be defined as follows : $c_{\mu} \delta t \equiv $ average probability that a particular combination of $R_{\mu}$ reactant molecules will react accordingly in the next time interval $\delta t$ (first order).
-\end{hyp}
+\begin{defn}{}
+The reaction parameter $c_{\mu}$ is defined so that $c_{\mu} \delta t$ gives the probability that a randomly chosen molecule of chemical species $S$ reacts during the time interval [$t, t+ \delta t$] where $t$ is time and $\delta t$ is an infinitesimally small time step.
+\end{defn}
 
-\begin{defn}State of the system is defined by the number of molecules of each species and changes discretely whenever one of the reactions is executed. The probability that a certain reaction $\mu$ will take place in the next instant of time is given by $a_{\mu}dt + o(dt).$
+\begin{defn}{}
+The probability that exactly one reaction $\mu$ occurs during the infinitesimal time interval [$t, t+ \delta t$] is equal to $S(t)k \delta t$ where $S(t)$ is the number of chemical species $S$ at time $t$.
+\end{defn}
+
+\begin{defn}{}
+State of the system is defined by the number of molecules of each species and changes discretely whenever one of the reactions is executed.
 \end{defn}
 
 \subsection{Gillespie's Direct Method}
@@ -115,12 +106,12 @@ Given the problem defined above, the Gillespie's Direct Method answers two quest
 
   \subsubsection{Gillespie's Direct Method formulas}
   \begin{enumerate}
-    \item Probability density $P(\mu, \tau)$ that the next reaction is $\mu$ and it occurs at time $\tau \rightarrow P(\mu, \tau)d\tau = a_{\mu}exp(-\tau \sum_{j}a_{j})d\tau$. \label{itm:(eq 1)}
-    \item Probability for reactions $\rightarrow Pr(Reaction = \mu) = a_{\mu} / \sum_{j}a_{j}$. \label{itm:(eq 2)}
-    \item Probability distribution for times $\rightarrow P(\tau)d\tau = (\sum_{j}a_{j})exp(-\tau \sum_{j}a_{j})d\tau$.\label{itm:(eq 3)}
+    \item Probability density $P(\mu, \tau)$ that the next reaction is $\mu$ and that it occurs at time $\tau$ is given by : \\ $P(\mu, \tau)d\tau = a_{\mu}exp(-\tau \sum_{j}a_{j})d\tau$. \label{itm:(eq 1)}
+    \item Probability that the next reaction is reaction $\mu$ is given by : \\  $Pr(Reaction = \mu) = a_{\mu} / \sum_{j}a_{j}$. \label{itm:(eq 2)}
+    \item Probability distribution for times \\  $P(\tau)d\tau = (\sum_{j}a_{j})exp(-\tau \sum_{j}a_{j})d\tau$.\label{itm:(eq 3)}
   \end{enumerate}
 
-\subsection{Gillespie's Direct Method : Pseudo code} \ref{alg:Gillespie's Direct Method}
+\subsubsection{Gillespie's Direct Method : Pseudo code}
 \begin{algorithm}[!h]                     % enter the algorithm environment
 \caption{Gillespie's Direct Method}       % give the algorithm a caption
 \begin{algorithmic}                       % enter the algorithmic environment
@@ -138,18 +129,8 @@ Given the problem defined above, the Gillespie's Direct Method answers two quest
 \label{alg:Gillespie's Direct Method}
 \end{algorithm}
 
-\subsection{Gillespie's Direct Method : Example}
-\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework : Direct Method }
-    \begin{figure}[!h]
-    \centering
-    \includegraphics[width=1\textwidth]{Images/Figure_1.png}
-    \caption{The x-axis denotes the duration time of the simulation and the y-axis denotes the number of molecules of each species $S_{i}$ at each time step.}
-    \label{fig: Single sample trajectory}
-    \end{figure}
-\end{example}
-
-\subsection{Gillespie's Direct Method : Implementation}
-The source code of the simple simulation model can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_first_reaction}{Direct-method-github}. The reaction set is the example used in Gillespie's paper \cite{gillespie_general_1976}.
+\subsubsection{Gillespie's Direct Method : Example}
+The source code of the Direct method simulation model can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_first_reaction}{Direct-method-github}. The reaction set is the example used in Gillespie's paper \cite{gillespie_general_1976}.
 \begin{gather}
   {X \xrightarrow{c_{1}} Y}      \\
   {Y \xrightarrow{c_{2}} X}      \\
@@ -158,29 +139,40 @@ The source code of the simple simulation model can be found at \href{https://git
   {W + X \xrightarrow{c_{5}} 2X} \\
   {2X \xrightarrow{c_{6}} W + X}
 \end{gather}
-The reaction parameter $c_{\mu}$ is chosen randomly and the initial number of each species is $= 1$.
+where the reaction parameters $c_{i} \in (i = 1, 2, \dots, 6)$ is equal to [1,1,2,1,2,1] respectively and the initial number of each species is $= 10$.
+\begin{example}{Generating a sample trajectories of a chemical process in the stochastic framework : Direct Method}
+    \begin{figure}[!h]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/w_5.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/x_5.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/y_5.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/z_5.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}
+    \caption{The x-axis denotes the duration time of the simulation and the y-axis denotes the number of molecules of each species $S_{i}$ at each time step.}
+    \end{figure}
+\end{example}
 
-\section{Fifth week (9th-20th September)}
 \subsection{Gillespie's Next Reaction Method}
-The goal of those two weeks was to implement the Gillespie Next Reaction Method in order to be able to consider larger systems. The main idea behind the Next Reaction Method is to generate a putative time $\tau_i$ for each reaction $i$ to occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next Reaction Method is implemented using specific data structures.
+The goal of the next reaction method is to do away with the above processes and update only data that has been modified. The main idea is to generate a putative time $\tau_i$ for each reaction $i$ that will occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next Reaction Method is implemented using specific data structures.
+To make the sampling of reactions more efficient, an indexed priority queue is used to store the reaction times. On the other hand, to make the recomputation of propensities more efficient, a dependency graph is used. This dependency graph tells which reaction propensities to update after a particular reaction has fired.
 
-\begin{defn}
-Let Reactants($\rho$) and Products($\rho$) be the set of reactants and products respectively of a reaction $\mu$.
-\end{defn}
-
-\begin{defn} Let $a_{\mu}$ be the value computed by the propensity function and DependsOn($a_{\mu}$) be the set of substances that affects the value $a_{\mu}$.
-\end{defn}
-
-\begin{defn} Let Affects($\mu$) be the set of substances that are affected if reaction $\mu$ occurs.
-\end{defn}
-
-\begin{defn} \cite{gibson_efficient_2000} Given a set of reactions $R$, the graph $G = G(V, E)$ is a directed graph where $V$ is the set of reactions and there exists an edge from $v_i$ to $v_j$ if and only if  Affects($v_i$) $\cap$ DependsOn($a_{v_{j}}$) $\neq \emptyset$. $G$ is then referred to as the dependency graph of the set of reactions $R$ and precise exactly which $a_is$ to change when a given reaction occurs.
-\end{defn}
-
-\begin{defn} Indexed priority Queues : An indexed priority queue is a generic priority queue with random access to its elements through an index structure.
-\end{defn}
-
-\subsection{Gillespie's Next Reaction Method : Pseudo code} \ref{alg:Gillespie's Next Reaction Method}
+\subsubsection{Gillespie's Next Reaction Method : Pseudo code} \ref{alg:Gillespie's Next Reaction Method}
 \begin{algorithm}[!h]                            % enter the algorithm environment
 \caption{Gillespie's Next Reaction Method}       % give the algorithm a caption
 \begin{algorithmic}                              % enter the algorithmic environment
@@ -207,24 +199,7 @@ Let Reactants($\rho$) and Products($\rho$) be the set of reactants and products 
 \label{alg:Gillespie's Next Reaction Method}
 \end{algorithm}
 
-\subsection{Gillespie's Next Reaction Method : Examples}
-\begin{example}{Generating a sample trajectory of a chemical process in the stochastic framework : Next Reaction Method.}
-    \begin{figure}[!h]
-    \centering
-    \includegraphics[width=1\textwidth]{Images/Figure_1_Next_reaction.png}
-    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 1}
-    \label{fig: sample trajectory}
-    \end{figure}
-
-    \begin{figure}[!h]
-    \centering
-    \includegraphics[width=1\textwidth]{Images/Figure_5_Next_reaction.png}
-    \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 2}
-    \label{fig: sample trajectory}
-    \end{figure}
-\end{example}
-
-\subsection{Gillespie's Next Reaction Method : Implementation}
+\subsubsection{Gillespie's Next Reaction Method : Example}
 The source code Next Reaction Method can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_next_reaction}{Next-Reaction-Method-github}. The reaction set is the example used in the following paper \cite{gibson_efficient_2000}.
 \begin{gather}
   {A + B \xrightarrow{k_{1}} C}      \\
@@ -233,34 +208,108 @@ The source code Next Reaction Method can be found at \href{https://github.com/Pr
   {F \xrightarrow{k_{4}} D + G}     \\
   {E + G \xrightarrow{k_{5}} A} \\
 \end{gather}
-The reaction parameter $k_{\mu}$ is chosen randomly and the initial number of each species is $ = 10$.
-
-\subsection{Meet up with the collaborators of KU Leuven : Re-calibrate the goal}
-  \begin{enumerate}
-    \item Understanding the lag phase in the amyloid fibril formation. \ref{fig:lag phase}
-      \begin{figure}[!h]
+where the reaction parameters $k_{\mu} \in (i = 1, 2, \dots, 5)$ is equal to [1,2,2,2,1] respectively and the initial number of each species is $= 10$.
+\begin{example}{Generating a sample trajectories of a chemical process in the stochastic framework : Next Reaction Method}
+    \begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
       \centering
-      \includegraphics[width=1\textwidth]{Images/Figuur2.pdf}
-      \caption{lag phase in the amyloid fibril formation}
-      \label{fig:lag phase}
-      \end{figure}
-    \item Self assembly phenomenon. \ref{fig:amyloid stacking}
-      \begin{figure}[!h]
+        \includegraphics[width=1.1\linewidth]{Images/a.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
       \centering
-      \includegraphics[width=1\textwidth]{Images/amyloidstacking_2.png}
-      \caption{Amyloid stacking}
-      \label{fig:amyloid stacking}
-      \end{figure}
+        \includegraphics[width=1.1\linewidth]{Images/b.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/c.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/d.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/e.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/f.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+        \includegraphics[width=1.1\linewidth]{Images/g.png}
+        \label{fig: Single sample trajectory}
+    \end{subfigure}%
+    \caption{The x-axis denotes the duration time of the simulation and the y-axis denotes the number of molecules of each species $S_{i}$ at each time step.}
+    \end{figure}
+\end{example}
 
-    \item Finding the rate constants.
-  \end{enumerate}
+\section {Molecular mechanisms of protein aggregation}
+Until now, all what was done is using random reaction parameters for each reaction in the stochastic simulation. However in order to study the protein aggregation, understanding the kinetics of the aggregation is fundametal. In the following paper \cite{meisl_molecular_2016}, a protocol is described on how to make full use of kinetic descriptions derived from a model of the underlying microscopic reactions that make up the aggregation network. The fitted parameters are therefore meaningful and correspond to physical properties of the system, such as nucleus sizes, rate constants of individual reactions and saturation concentrations.
 
-\section{Following weeks}
-\begin{enumerate}
-\item On the lag phase : Hypothesis.
-\item On the lag phase : Solutions.
-\item On the lag phase : Implementation of the solutions.
-\end{enumerate}
+The key idea is to analyze a large data set of multiple kinetic traces at different reagent concentrations simultaneously,with a single rate law and yield strong mechanistic constraints that will be helful in choosing the appropriate models.
+
+\subsection{Obtaining qualitative constraints : Half times}
+Given a dataset, several fundametal models can be considered for the fitting process to yield the rate constants. In order to choose the best model, adding some constraints based on the concentration dependence of the aggregation reaction is a solution. A helpful qualitative constraint is half times.
+\begin{defn}{} Half-time is defined as the time at which the signal has reached half of its final plateau value. \end{defn}
+Normalised data and the monomer concentration of each repeat is used for this process. By plotting Log(half time) versus Log(monomer concentration) plot, the slope known as the scaling exponent gives insight as to which about the dominant process of fibre multiplication, which in turn can be used to decide on possible models for the fitting. By considering how the half times scale with monomer concentration and how this scaling depends on the monomer concentration, one can obtain constraints on possible mechanisms.
+
+Very generally, a negative curvature in the double logarithmic plots (i.e., when the slope becomes steeper at higher
+monomer concentrations, and therefore the process more monomer dependent) is indicative of competition between several
+processes in parallel. A positive curvature, in contrast (i.e., a flattening of the curve at higher monomer concentrations, and thus
+a decrease in monomer dependence), suggests the presence of a saturation effect in a serial process  or, in rare cases, at monomer concentrations close to solubility, it can be due to a change in nucleus size9. The behavior of half-times with varying monomer concentration is, therefore, a
+good first guide to narrowing down the number of possible models, because it limits the number of acceptable reaction networks
+by determining the reaction order of the dominant process and probing for competition or saturation effects. The model for fitting needs to be chosen to reflect these findings.
+
+\subsubsection{Log(half time) versus Log(monomer concentration) plot}
+\begin{example}{To set title}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/half_time_vs_monomer.png}
+  \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 2}
+  \label{fig: sample trajectory}
+  \end{figure}
+\end{example}
+The source code to generate the log off plot of a given dataset can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/Fitting}{Next-Reaction-Method-github}.
+
+
+\subsection{From Half-times to models}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Images/half_times_to_models.png}
+\caption{The curvature of the double logarithmic plots and the value of their slopes gives insights into which aggregation mechanisms are dominant. The flowchart illustrates the decision process to arrive at a likely model, based on the half time plots.}
+\label{fig: sample trajectory}.
+\end{figure}
+
+
+
+
+\section{Results}
+\subsection {Amylofit's parameters estimation}
+
+\subsection{My program's parameter estimation}
+
+\subsection{Amylofit's estimated parameters in Gillespie stochastic framework}
+
+\subsection{My estimated parameters in Gillespie stochastic framework}
+
+
+\section{Conclusion}
+
+
+
+
+
 
 \clearpage
 \bibliographystyle{alpha}

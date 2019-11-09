@@ -1,18 +1,21 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}% 
-\contentsline {section}{\numberline {2}First 2 weeks (12th-23rd August)}{2}{section.2}% 
-\contentsline {section}{\numberline {3}Third week (26th-31st August)}{2}{section.3}% 
-\contentsline {section}{\numberline {4}Fourth week (2nd-6th September)}{2}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Gillespie's stochastic framework of chemical kinetics}{2}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Gillespie's Direct Method}{3}{subsection.4.2}% 
-\contentsline {subsubsection}{\numberline {4.2.1}Gillespie's Direct Method formulas}{3}{subsubsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.3}Gillespie's Direct Method : Pseudo code}{3}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}Gillespie's Direct Method : Example}{3}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}Gillespie's Direct Method : Implementation}{4}{subsection.4.5}% 
-\contentsline {section}{\numberline {5}Fifth week (9th-20th September)}{5}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Gillespie's Next Reaction Method}{5}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Gillespie's Next Reaction Method : Pseudo code}{5}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}Gillespie's Next Reaction Method : Examples}{5}{subsection.5.3}% 
-\contentsline {subsection}{\numberline {5.4}Gillespie's Next Reaction Method : Implementation}{5}{subsection.5.4}% 
-\contentsline {subsection}{\numberline {5.5}Meet up with the collaborators of KU Leuven : Re-calibrate the goal}{7}{subsection.5.5}% 
-\contentsline {section}{\numberline {6}Following weeks}{7}{section.6}% 
+\contentsline {subsection}{\numberline {1.1}Mathematical modeling}{2}{subsection.1.1}% 
+\contentsline {section}{\numberline {2}Gillespie's stochastic framework of chemical kinetics}{2}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Gillespie's Direct Method}{3}{subsection.2.1}% 
+\contentsline {subsubsection}{\numberline {2.1.1}Gillespie's Direct Method formulas}{3}{subsubsection.2.1.1}% 
+\contentsline {subsubsection}{\numberline {2.1.2}Gillespie's Direct Method : Pseudo code}{3}{subsubsection.2.1.2}% 
+\contentsline {subsubsection}{\numberline {2.1.3}Gillespie's Direct Method : Example}{3}{subsubsection.2.1.3}% 
+\contentsline {subsection}{\numberline {2.2}Gillespie's Next Reaction Method}{4}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Gillespie's Next Reaction Method : Pseudo code}{5}{subsubsection.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Gillespie's Next Reaction Method : Example}{5}{subsubsection.2.2.2}% 
+\contentsline {section}{\numberline {3}Molecular mechanisms of protein aggregation}{7}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Obtaining qualitative constraints : Half times}{7}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Log(half time) versus Log(monomer concentration) plot}{7}{subsubsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.2}From Half-times to models}{9}{subsection.3.2}% 
+\contentsline {section}{\numberline {4}Results}{9}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Amylofit's parameters estimation}{9}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}My program's parameter estimation}{9}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Amylofit's estimated parameters in Gillespie stochastic framework}{9}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}My estimated parameters in Gillespie stochastic framework}{9}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}% 

@@ -1,17 +1,20 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{First 2 weeks \(12th-23rd August\)}{}% 2
-\BOOKMARK [1][-]{section.3}{Third week \(26th-31st August\)}{}% 3
-\BOOKMARK [1][-]{section.4}{Fourth week \(2nd-6th September\)}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Gillespie's stochastic framework of chemical kinetics}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Gillespie's Direct Method}{section.4}% 6
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Gillespie's Direct Method formulas}{subsection.4.2}% 7
-\BOOKMARK [2][-]{subsection.4.3}{Gillespie's Direct Method : Pseudo code}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.4}{Gillespie's Direct Method : Example}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.5}{Gillespie's Direct Method : Implementation}{section.4}% 10
-\BOOKMARK [1][-]{section.5}{Fifth week \(9th-20th September\)}{}% 11
-\BOOKMARK [2][-]{subsection.5.1}{Gillespie's Next Reaction Method}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.2}{Gillespie's Next Reaction Method : Pseudo code}{section.5}% 13
-\BOOKMARK [2][-]{subsection.5.3}{Gillespie's Next Reaction Method : Examples}{section.5}% 14
-\BOOKMARK [2][-]{subsection.5.4}{Gillespie's Next Reaction Method : Implementation}{section.5}% 15
-\BOOKMARK [2][-]{subsection.5.5}{Meet up with the collaborators of KU Leuven : Re-calibrate the goal}{section.5}% 16
-\BOOKMARK [1][-]{section.6}{Following weeks}{}% 17
+\BOOKMARK [2][-]{subsection.1.1}{Mathematical modeling}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Gillespie's stochastic framework of chemical kinetics}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Gillespie's Direct Method}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Gillespie's Direct Method formulas}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Gillespie's Direct Method : Pseudo code}{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Gillespie's Direct Method : Example}{subsection.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Gillespie's Next Reaction Method}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Gillespie's Next Reaction Method : Pseudo code}{subsection.2.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Gillespie's Next Reaction Method : Example}{subsection.2.2}% 10
+\BOOKMARK [1][-]{section.3}{Molecular mechanisms of protein aggregation}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Obtaining qualitative constraints : Half times}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Log\(half time\) versus Log\(monomer concentration\) plot}{subsection.3.1}% 13
+\BOOKMARK [2][-]{subsection.3.2}{From Half-times to models}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Results}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Amylofit's parameters estimation}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{My program's parameter estimation}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Amylofit's estimated parameters in Gillespie stochastic framework}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{My estimated parameters in Gillespie stochastic framework}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 20
