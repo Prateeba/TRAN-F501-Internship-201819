@@ -95,6 +95,7 @@ class Eq_33(object):
 
 				self.TPRINT += self.TINT
 		#self.plot()
+		self.output_plot() 
 		
 	def plot(self) : 
 		
@@ -109,7 +110,26 @@ class Eq_33(object):
 		plt.xlabel("Time")
 
 		plt.show()
-	
+
+	def output_plot(self) : 
+		print(self.t_plot)
+		with open('w.txt', 'a') as f:
+			for item in self.w_plot : 
+				f.write("%s " % item)
+			f.write("\n")
+		with open('x.txt', 'a') as f:
+			for item in self.x_plot : 
+				f.write("%s " % item)
+			f.write("\n")
+		with open('y.txt', 'a') as f:
+			for item in self.y_plot : 
+				f.write("%s " % item)
+			f.write("\n")
+		with open('z.txt', 'a') as f:
+			for item in self.z_plot : 
+				f.write("%s " % item)
+			f.write("\n")
+
 	def get_t_plot(self) : 
 		return self.t_plot 
 	def get_w_plot(self) : 
@@ -143,14 +163,15 @@ def probability_distribution() :
 	#plt.show()
 
 
-
-
 if __name__ == '__main__':
-	C = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
-	eq33 = Eq_33(C, 6, 0, 10, 10, 10, 10, 0.5, 0.1)
-	eq33.simulate()
+	i = 0
+	n = 5
+	C = [1, 1, 2, 1, 2, 1]
+	while (i < n ) : 
+		eq33 = Eq_33(C, 6, 0, 10, 10, 10, 10, 20, 1)
+		eq33.simulate()
+		print(i)
+		i+= 1 
 
-
-	probability_distribution() 
 
 	

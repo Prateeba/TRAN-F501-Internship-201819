@@ -12,17 +12,19 @@ private :
 	std::vector<Reaction*> reactions ; 
 	std::map<char, int> initial_values ; 
 	priority_queue::updatable_priority_queue<int, double> p_q ; 
-	std::map<char, std::vector<int>> plots {{'A', {10}},{'B', {10}} ,{'C', {10}} ,{'D', {10}}, {'E', {10}}, {'F', {10}}, {'G', {10}}}; // for plotting -> number of molecules 
+	std::map<char, std::vector<double>> plots ; 
+	
 
 public : 
-	Next_reaction_method(std::vector<Reaction*>) ; 
+	Next_reaction_method(std::vector<Reaction*>, std::map<char, int>) ; 
 	priority_queue::updatable_priority_queue<int, double>get_p_q(){return p_q ;} 
 	void update_propensity(std::vector<double>&, int, int) ; 
-	void simulate(std::map<char, int>, RanGen&) ; 
+	void simulate(RanGen&) ; 
 	void update_outgoing_edges(double, int, RanGen& ran) ; 
 	void display_number_of_molecules() ; 
 	void display_tau() ; 
 	void fill_plot() ; 
+	void initialize_plot_container() ; 
 } ; 
 
 

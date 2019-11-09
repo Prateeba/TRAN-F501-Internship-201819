@@ -7,16 +7,17 @@
 #include <iterator>
 #include <typeinfo> 
 
-Next_reaction_method::Next_reaction_method(std::vector<Reaction*> r) {
+Next_reaction_method::Next_reaction_method(std::vector<Reaction*> r,std::map<char, int> init) {
 	reactions = r ; 
+	initial_values = init ; 
+	initialize_plot_container() ; 
 }
 
 void Next_reaction_method::update_propensity(std::vector<double>& prop,int index,int ai) {
 	prop[index] = ai ; 
 }
 
-void Next_reaction_method::simulate(std::map<char, int> values, RanGen& ran) {
-	initial_values = values ;           	// set initial numbers of molecules 
+void Next_reaction_method::simulate(RanGen& ran) {
 	double t = 0 ;                          // set start time to 0 
 	double t_end = 20 ;                    	// set end time 
 	graph = new Dependency(reactions) ; 	// generate a dependency graph G 
@@ -81,7 +82,7 @@ void Next_reaction_method::simulate(std::map<char, int> values, RanGen& ran) {
 
 		update_outgoing_edges(prev_t, mu, ran) ; 
 
-		t ++ ;  
+		t += 1;  
 		p_times.push_back(t) ; 
 		fill_plot() ; 
 	}
@@ -135,54 +136,48 @@ void Next_reaction_method::update_outgoing_edges(double t, int mu, RanGen& ran) 
 }
 
 void Next_reaction_method::display_tau(){
-	/*for (int i = 0; i < p_times.size();  i++){
-		printf("%f\t",p_times[i]);
-		printf("%f\t",plots['A'][i]);
-		printf("%f\t",plots['B'][i]);
-	}*/
 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << p_times[i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['A'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['B'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['C'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['D'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['E'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['F'][i] << " " ; 
-	}
-	std::cout << "\n" ; 
-	for (int i = 0 ; i < p_times.size() ; i++) {
-		std::cout << plots['G'][i] << " " ; 
-	}
+	/* Save results */
+	std::ofstream sim;
+	sim.open("./results/sim.txt");
 
+	std::string t = "" ; 
+	for (int i = 0 ; i < p_times.size() ; i++) {
+		t += std::to_string(p_times[i]) ; 
+		t += " " ;  
+	}
+	t += "\n" ;
+	sim << t ;   
+
+	std::map<char, std::vector<double>>::iterator it;
+	for ( it = plots.begin(); it != plots.end(); it++ ){
+		std::string temp = "" ; 
+		temp += it->first ; 
+		temp += " : " ; 
+		for (int i = 0 ; i < it->second.size(); i++) {
+			temp += std::to_string(plots[it->first][i]) ; 
+			temp += " " ;  
+		}
+		temp += "\n" ;
+		sim << temp ;  
+	} 
+	sim.close();
 
 }
 
 /* Keeps track of the number of molecules in the pool after appying a certain type of reaction*/
 void Next_reaction_method::fill_plot() {
-	plots['A'].push_back(initial_values['A']) ;  
-	plots['B'].push_back(initial_values['B']) ; 
-	plots['C'].push_back(initial_values['C']) ; 
-	plots['D'].push_back(initial_values['D']) ; 
-	plots['E'].push_back(initial_values['E']) ; 
-	plots['F'].push_back(initial_values['F']) ; 
-	plots['G'].push_back(initial_values['G']) ; 
+	std::map<char, std::vector<double>>::iterator it;
+	for ( it = plots.begin(); it != plots.end(); it++ ){
+		plots[it->first].push_back(initial_values[it->first]) ; 
+	} 
+}
+
+void Next_reaction_method::initialize_plot_container(){
+	std::map<char, int>::iterator it;
+	for ( it = initial_values.begin(); it != initial_values.end(); it++ ){
+		std::vector<double> tmp ; 
+		tmp.push_back(it->second) ; 
+		plots.insert(std::pair<char,std::vector<double>>(it->first, tmp)) ; 
+	}
 }

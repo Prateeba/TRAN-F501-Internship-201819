@@ -1,9 +1,0 @@
-##
-#  Makefile 
-#
-
-cpp_deSolve.o : cpp_deSolve.cpp cpp_deSolve.h
-	g++ -g -c cpp_deSolve.cpp
-
-SIR_example : SIR_example.cpp cpp_deSolve.o 
-	g++ -g -o SIR_example SIR_example.cpp cpp_deSolve.o
