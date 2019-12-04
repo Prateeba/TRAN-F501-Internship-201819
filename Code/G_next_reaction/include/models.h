@@ -87,12 +87,12 @@ public :
 		return Model("Random", reactions, initial_values) ;   
 	}
 
-	Model nucleation_elongation(int kn_kplus) {
+	Model nucleation_elongation(double kn_kplus) {
 		/* Here we have two reactions :  
 		 * 1. Monomers -> Formation of primary nuclei 
 		 * 2. Monomers -> Add themselves to Fibril ends 
 		 */ 
-		std::map<char, int> initial_values {{'M', 10000},{'P', 4000} ,{'F', 3000}};
+		std::map<char, int> initial_values {{'M', 1000},{'P', 300} ,{'F', 100}};
 		std::vector<Reaction*> reactions ; 
 
 		std::vector<char> r_1 = {'M'} ; 
@@ -109,26 +109,26 @@ public :
 	}
 
 
-	Model secondary_nucleation() {
+	Model secondary_nucleation(double kplus_kn, double kplus_k2) {
 		/* Here we have three reactions going on :  
 		 * 1. Monomers -> Formation of primary nuclei
 		 * 2. Monomers -> Add themselves to Fibril ends 
 		 * 3. Moners -> Secondary nucleation 
 		*/
-		std::map<char, int> initial_values {{'M', 0.000001},{'P', 0} ,{'F', 0}, {'S', 0}};
+		std::map<char, int> initial_values {{'M', 1000},{'P', 300} ,{'F', 100}, {'S', 100}};
 		std::vector<Reaction*> reactions ; 
 
 		std::vector<char> r_1 = {'M'} ; 
 		std::vector<char> p_1 = {'P'} ;
-		Reaction* r1 = new Reaction(r_1,p_1,1, 0) ;
+		Reaction* r1 = new Reaction(r_1,p_1,kplus_kn, 0) ;
 
 		std::vector<char> r_2 = {'M'} ; 
 		std::vector<char> p_2 = {'F'} ;
-		Reaction* r2 = new Reaction(r_2,p_2,1, 1) ;
+		Reaction* r2 = new Reaction(r_2,p_2,kplus_kn, 1) ;
 
 		std::vector<char> r_3 = {'M'} ; 
 		std::vector<char> p_3 = {'S'} ;
-		Reaction* r3 = new Reaction(r_3,p_3,1, 2) ;
+		Reaction* r3 = new Reaction(r_3,p_3,kplus_k2, 2) ;
 
 		reactions.push_back(r1) ; reactions.push_back(r2) ; reactions.push_back(r3) ;
 

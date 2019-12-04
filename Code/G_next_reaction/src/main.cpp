@@ -11,8 +11,9 @@
 
 int main(){
 
-	//Models m; Model r = m.nucleation_elongation(2.62e+11)  ; 
-	Models m ; Model r = m.random() ; 
+	//Models m; Model r = m.nucleation_elongation(9.99e+11)  ; 
+	//Models m ; Model r = m.random() ; 
+	Models m; Model r = m.secondary_nucleation(2.2449157107307083, 0.4569655450)  ; 
 	RanGen ran; 
 
 	Next_reaction_method* n = new Next_reaction_method(r.get_reactions(), r.get_initial_values()) ; 	

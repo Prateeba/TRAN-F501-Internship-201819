@@ -11,11 +11,11 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Gillespie's Next Reaction Method : Example}{5}{subsubsection.2.2.2}% 
 \contentsline {section}{\numberline {3}Molecular mechanisms of protein aggregation}{7}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Obtaining qualitative constraints : Half times}{7}{subsection.3.1}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Log(half time) versus Log(monomer concentration) plot}{7}{subsubsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.2}From Half-times to models}{9}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Extracting half times}{7}{subsubsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.2}From Half-times to models}{8}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Global fitting}{8}{subsection.3.3}% 
 \contentsline {section}{\numberline {4}Results}{9}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Amylofit's parameters estimation}{9}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}My program's parameter estimation}{9}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}Amylofit's estimated parameters in Gillespie stochastic framework}{9}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}My estimated parameters in Gillespie stochastic framework}{9}{subsection.4.4}% 
-\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}% 
+\contentsline {subsection}{\numberline {4.1}Amylofit's estimated rate constants in Gillespie's stochastic framework}{9}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Implemented simulations's estimated rate constants in Gillespie's stochastic framework}{14}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Implementation}{15}{subsection.4.3}% 
+\contentsline {section}{\numberline {5}Conclusion}{16}{section.5}% 

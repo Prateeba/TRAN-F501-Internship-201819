@@ -3,6 +3,7 @@ import random
 import numpy as np 
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 
 with open("./results/sim.txt", "r") as f:
 	data = f.readlines()
@@ -19,9 +20,11 @@ for i in range (1, len(data)) :
 	plt.scatter(time, y_axis, label=tmp[0])
 
 
-plt.title('To set', color='r')
-plt.legend(loc='upper right')
-plt.legend().draggable()
-plt.ylabel("Time (h)")
-plt.xlabel("To set")
+
+plt.title('Sample trajectory of the secondary nucleation model \n with Amylofit\'s fitted parameters  ', color='b')
+fontP = FontProperties()
+fontP.set_size('x-small')
+plt.legend(loc='upper center', prop=fontP, bbox_to_anchor=(0.5, 1.00),ncol=3, fancybox=True, shadow=True)
+plt.ylabel("Number of molecules")
+plt.xlabel("Time step")
 plt.savefig('./results/sim.png')

@@ -35,7 +35,7 @@ class Eq_33(object):
 		self.z_graph = pseudo_dependency_graph("Z", 'g')                  
 
 	def compute_reactions(self) : 
-		self.A[0] = self.C[0]*self.Y
+		self.A[0] = self.C[0]*self.X
 		self.A[1] = self.C[1]*self.Y
 		self.A[2] = self.C[2]*self.X*(self.X-1)/2
 		self.A[3] = self.C[3]*self.Z

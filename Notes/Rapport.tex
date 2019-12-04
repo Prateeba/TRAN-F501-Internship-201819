@@ -68,16 +68,16 @@ bottom=25mm, right=25mm
 \tableofcontents \pagebreak
 
 \section{Introduction}
-Diseases like Alzheimer and Parkinson disease are the result of proteins aggregating into large fractal structures that hinder the cell function or even destroy them. Understanding how aggregates are formed and change over time is important to understand when they become harmful and how maybe treatments affect aggregate formation.
+Diseases like Alzheimer and Parkinson disease are the result of proteins aggregating into large fractal structures that hinder the cell function or even destroy them. Understanding how aggregates are formed and change over time is important to understand when they become harmful and how maybe treatments affect aggregate formation. \\
 
-The goal of this Internship is to implement a simulation system to study aggregation between proteins and  is performed in collaboration with the Switch lab in the KU Leuven, who has an extensive expertise in studying aggregation and related diseases.
+The goal of this Internship is to implement a simulation system to study aggregation between proteins and is performed in collaboration with the Switch lab in the KU Leuven, who has an extensive expertise in studying aggregation and related diseases.
 
 \subsection{Mathematical modeling}
 The principle task is to develop a method for simulating the time evolution of the $N$ quantities $\{X_{i}\}$, knowing only their initial values $\{X_{i}^{(0)}\}$, the form of the $M$ reactions $\{R_{\mu}\}$ and the values of the reaction parameters $\{c_{\mu}\}$.
 There are two fundamental approaches to the mathematical modelling of chemical reactions.
 \begin{enumerate}
   \item Deterministic models which are based on differential equations.
-  \item Stochastic simulations where the fundametal principle is that molecular reactions are essentially random processes i.e it is impossible to say with complete certainty the time at which the next reaction will occur. This approach uses basic Newtonian physics and thermodynamics to arrive at a form defined as the propensity function that gives the probability $a_\mu$ of reaction $\mu$ occuring in time interval ($t, t+\delta t$).
+  \item Stochastic simulations where the fundamental principle is that molecular reactions are essentially random processes, i.e it is impossible to say with complete certainty the time at which the next reaction will occur. This approach uses basic Newtonian physics and thermodynamics to arrive at a form defined as the propensity function that gives the probability $a_\mu$ of reaction $\mu$ occurring in the time interval ($t, t+\delta t$).
 \end{enumerate}
 
 \section{Gillespie's stochastic framework of chemical kinetics}
@@ -140,7 +140,7 @@ The source code of the Direct method simulation model can be found at \href{http
   {2X \xrightarrow{c_{6}} W + X}
 \end{gather}
 where the reaction parameters $c_{i} \in (i = 1, 2, \dots, 6)$ is equal to [1,1,2,1,2,1] respectively and the initial number of each species is $= 10$.
-\begin{example}{Generating a sample trajectories of a chemical process in the stochastic framework : Direct Method}
+\begin{example}{Generating sample trajectories of a chemical process in the stochastic framework : Direct Method}
     \begin{figure}[!h]
     \centering
     \begin{subfigure}{.5\textwidth}
@@ -169,7 +169,7 @@ where the reaction parameters $c_{i} \in (i = 1, 2, \dots, 6)$ is equal to [1,1,
 \end{example}
 
 \subsection{Gillespie's Next Reaction Method}
-The goal of the next reaction method is to do away with the above processes and update only data that has been modified. The main idea is to generate a putative time $\tau_i$ for each reaction $i$ that will occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next Reaction Method is implemented using specific data structures.
+The goal of the next reaction method is to do away with the above processes and update only the data that has been modified. The main idea is to generate a putative time $\tau_i$ for each reaction $i$ that will occur and choose the reaction $\mu$ whose putative time $\tau_{\mu}$ is least. In order to minimize the computation time, the Next Reaction Method is implemented using specific data structures.
 To make the sampling of reactions more efficient, an indexed priority queue is used to store the reaction times. On the other hand, to make the recomputation of propensities more efficient, a dependency graph is used. This dependency graph tells which reaction propensities to update after a particular reaction has fired.
 
 \subsubsection{Gillespie's Next Reaction Method : Pseudo code} \ref{alg:Gillespie's Next Reaction Method}
@@ -200,7 +200,7 @@ To make the sampling of reactions more efficient, an indexed priority queue is u
 \end{algorithm}
 
 \subsubsection{Gillespie's Next Reaction Method : Example}
-The source code Next Reaction Method can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_next_reaction}{Next-Reaction-Method-github}. The reaction set is the example used in the following paper \cite{gibson_efficient_2000}.
+The source code for the Next Reaction Method can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/G_next_reaction}{Next-Reaction-Method-github}. The reaction set is the example used in the following paper \cite{gibson_efficient_2000}.
 \begin{gather}
   {A + B \xrightarrow{k_{1}} C}      \\
   {B + C \xrightarrow{k_{2}} D}      \\
@@ -209,7 +209,7 @@ The source code Next Reaction Method can be found at \href{https://github.com/Pr
   {E + G \xrightarrow{k_{5}} A} \\
 \end{gather}
 where the reaction parameters $k_{\mu} \in (i = 1, 2, \dots, 5)$ is equal to [1,2,2,2,1] respectively and the initial number of each species is $= 10$.
-\begin{example}{Generating a sample trajectories of a chemical process in the stochastic framework : Next Reaction Method}
+\begin{example}{Generating sample trajectories of a chemical process in the stochastic framework : Next Reaction Method}
     \begin{figure}[H]
     \centering
     \begin{subfigure}{.5\textwidth}
@@ -255,65 +255,185 @@ where the reaction parameters $k_{\mu} \in (i = 1, 2, \dots, 5)$ is equal to [1,
 \end{example}
 
 \section {Molecular mechanisms of protein aggregation}
-Until now, all what was done is using random reaction parameters for each reaction in the stochastic simulation. However in order to study the protein aggregation, understanding the kinetics of the aggregation is fundametal. In the following paper \cite{meisl_molecular_2016}, a protocol is described on how to make full use of kinetic descriptions derived from a model of the underlying microscopic reactions that make up the aggregation network. The fitted parameters are therefore meaningful and correspond to physical properties of the system, such as nucleus sizes, rate constants of individual reactions and saturation concentrations.
+Until now, all what was done is using random reaction parameters for each reaction in the stochastic simulation. However, in order to study the protein aggregation, understanding the kinetics of the aggregation is fundamental. In the following paper \cite{meisl_molecular_2016}, a protocol is described on how to make full use of kinetic descriptions derived from a model of the underlying microscopic reactions that make up the aggregation network. The fitted parameters are therefore meaningful and correspond to physical properties of the system, such as nucleus sizes, the kinetic rate constants of individual reactions and saturation concentrations.
 
-The key idea is to analyze a large data set of multiple kinetic traces at different reagent concentrations simultaneously,with a single rate law and yield strong mechanistic constraints that will be helful in choosing the appropriate models.
+The key idea is to analyze a large data set of multiple kinetic traces at different reagent concentrations simultaneously,with a single rate law and yield strong mechanistic constraints that will be helpful in choosing the appropriate models.
 
 \subsection{Obtaining qualitative constraints : Half times}
-Given a dataset, several fundametal models can be considered for the fitting process to yield the rate constants. In order to choose the best model, adding some constraints based on the concentration dependence of the aggregation reaction is a solution. A helpful qualitative constraint is half times.
 \begin{defn}{} Half-time is defined as the time at which the signal has reached half of its final plateau value. \end{defn}
-Normalised data and the monomer concentration of each repeat is used for this process. By plotting Log(half time) versus Log(monomer concentration) plot, the slope known as the scaling exponent gives insight as to which about the dominant process of fibre multiplication, which in turn can be used to decide on possible models for the fitting. By considering how the half times scale with monomer concentration and how this scaling depends on the monomer concentration, one can obtain constraints on possible mechanisms.
 
-Very generally, a negative curvature in the double logarithmic plots (i.e., when the slope becomes steeper at higher
-monomer concentrations, and therefore the process more monomer dependent) is indicative of competition between several
-processes in parallel. A positive curvature, in contrast (i.e., a flattening of the curve at higher monomer concentrations, and thus
-a decrease in monomer dependence), suggests the presence of a saturation effect in a serial process  or, in rare cases, at monomer concentrations close to solubility, it can be due to a change in nucleus size9. The behavior of half-times with varying monomer concentration is, therefore, a
-good first guide to narrowing down the number of possible models, because it limits the number of acceptable reaction networks
-by determining the reaction order of the dominant process and probing for competition or saturation effects. The model for fitting needs to be chosen to reflect these findings.
+Given a dataset, several fundamental models can be considered for the fitting process to yield the rate constants. In order to choose the best model, adding some constraints based on the concentration dependence of the aggregation reaction is a solution. By considering how the half times scale with monomer concentration and how this scaling
+depends on the monomer concentration, one can obtain constraints on possible mechanisms.
 
-\subsubsection{Log(half time) versus Log(monomer concentration) plot}
-\begin{example}{To set title}
-  \begin{figure}[H]
-  \centering
-  \includegraphics[width=1\textwidth]{Images/half_time_vs_monomer.png}
-  \caption{The x-axis denotes the time used and the y-axis denotes the number of molecules : Sample 2}
-  \label{fig: sample trajectory}
-  \end{figure}
-\end{example}
-The source code to generate the log off plot of a given dataset can be found at \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code/Fitting}{Next-Reaction-Method-github}.
+\subsubsection{Extracting half times}
+\begin{algorithm}[!h]                     % enter the algorithm environment
+\caption{Extracting half times algorithm}       % give the algorithm a caption
+\begin{algorithmic}                       % enter the algorithmic environment
+\REQUIRE Normalised data of aggregate concentration in units of fluorescence.
+\REQUIRE Monomer concentration for each curve.
+\ENSURE Scaling exponent.
+\FOR{each curve}
+    \STATE 1. Select the middle part of the curve.
+    \STATE 2. Fit a middle line through the selected middle part.
+    \STATE 3. Compute the point at which the fitted line crosses the value $0.5$
+\ENDFOR
+\end{algorithmic}
+\label{alg:Gillespie's Direct Method}
+\end{algorithm}
 
+The slope of Log(half time) versus Log(monomer concentration) also known as the scaling exponent gives insight about the dominant process of fibre multiplication. This can in turn can be used to decide on possible models for the fitting.
 
-\subsection{From Half-times to models}
+Very generally :
+\begin{enumerate}
+\item A negative curvature in the double logarithmic plot (i.e., when the slope becomes steeper at higher
+monomer concentrations and therefore the process is more monomer dependent) is indicative of competition between several
+processes in parallel.
+\item A positive curvature, in contrast (i.e., a flattening of the curve at higher monomer concentrations and thus
+a decrease in monomer dependence), suggests the presence of a saturation effect in a serial process  or, in rare cases, at monomer concentrations close to solubility, it can be due to a change in nucleus size.
+\end{enumerate}
+The behavior of half-times with varying monomer concentration is, therefore, a good first guide to narrowing down the number of possible models. It limits the number of acceptable reaction networks by determining the reaction order of the dominant process and probing for competition or saturation effects. The model for fitting needs to be chosen to reflect these findings. \\
+A flowchart to help decide on probable models using scaling exponents is shown section \ref{half-times}.
+
+\subsection{From Half-times to models}\label{half-times} \cite{meisl_molecular_2016}
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Images/half_times_to_models.png}
+\includegraphics[width=0.9\textwidth]{Images/half_times_to_models.png}
 \caption{The curvature of the double logarithmic plots and the value of their slopes gives insights into which aggregation mechanisms are dominant. The flowchart illustrates the decision process to arrive at a likely model, based on the half time plots.}
 \label{fig: sample trajectory}.
 \end{figure}
 
+\subsection{Global fitting}\label{global_fit}
+The Global fitting approach allows fitting large data sets, under a variety of conditions, usually a number of monomer concentrations, simultaneously to a single rate law. This enforces a relationship between experimental curves in which the free fitting parameters, such as rate constants and reaction orders, must be equal for all curves.
+It ensures that the microscopic model has the correct dependency not only on time, but also on the other parameters that are varied, such as
+the monomer concentration. Only in this manner can we obtain sufficient constraints to distinguish between the various complex models describing different aggregation reaction networks.
 
+The fitting process minimizes the mean squared residual error
+(MRE), given by   \[\frac{1}{N} \sum_{i=0}^N{(y_i - f(t_i))^2} \]
+where $N$ is the number of data points, $y_i$ is the measured value
+at time point $t_i$ and $f(t_i)$  is the model function evaluated at that
+time point.
 
+Mathematically, this represents a search for the global minimum on an $n$-dimensional energy landscape, where $n$ is the number of free fitting parameters.
 
-\section{Results}
-\subsection {Amylofit's parameters estimation}
+\section{Results}\label{res}
+\subsection{Amylofit's estimated rate constants in Gillespie's stochastic framework}
+Given the following dataset :
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/normal.pdf}
+  \caption{The x-axis denotes the time step and the y-axis denotes the fluorescence intensity of each experiment.}
+  \label{fig: sample trajectory}
+  \end{figure}
+\begin{enumerate}
+  \item The data is first normalised using the following formula  :
+  \[ y_{norm,i} = (1 - M_{0,frac}) \frac{y_{i} - y_{baseline}}{y_{plateau} - y_{baseline}} + M_{0,frac} \] where :
+  \begin{enumerate}
+    \item $y_i$ is the original value of the $ith$ data point.
+    \item $y_{norm,i}$ is its normalized value.
+    \item $y_{baseline}$ is the average value of the data at the baseline.
+    \item $y_{plateau}$ is the average value of the data at the plateau.
+    \item $M_{0,frac}$  is the relative initial concentration of aggregates.
+  \end{enumerate}
 
-\subsection{My program's parameter estimation}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/normalised.pdf}
+    \caption{The x-axis denotes the time step and the y-axis denotes the normalised fluorescence intensity of each experiment.}
+    \label{fig: sample trajectory}
+    \end{figure}
 
-\subsection{Amylofit's estimated parameters in Gillespie stochastic framework}
+  \item Secondly, the half time of each curve is computed.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/half_plot_amylofit.png}
+    \caption{The x-axis denotes the initial monomer concentration of the middle part of each curve and y-axis denotes the half time of each curve.}
+    \label{fig: sample trajectory}
+    \end{figure}
 
-\subsection{My estimated parameters in Gillespie stochastic framework}
+  \item Thirdly, the model is chosen according to the scaling exponent and the flowchart in section \ref{half-times}.
+  For the current dataset and according to the scaling exponent, the model that will fit the best is the Secondary nucleation.
 
+  \item The fourth step involves global fitting the data as described in section \ref{global_fit}.
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/amylofit.pdf}
+  \caption{The x-axis denotes the time step and the y-axis denotes the relative aggregate concentration of each experiment. The continued black line represents the fit found.}
+  \label{fig: sample trajectory}
+  \end{figure}
+  The fitted paramaters are :
+  \begin{enumerate}
+    \item $k_{+}k_{n} = 4.28+11$ in $conc^{n_c} time^{-2}$
+    \item $k_{+}k_{2} = 636$ in $conc^{n_{2}^-1} time^{-2}$
+    \item $n_c = 2$
+    \item $n_2 = 2$
+  \end{enumerate}
+
+  \item The last step consists of using the above fitted parameters in Gillespie's stochastic framework in order to observe the behaviour of each component of the model.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/sim1.png}
+    \caption{The x-axis denotes the time step y-axis denotes the number of molecules of each component where
+      F is the created fibril ends. $F_{0} = 100$.
+      P is the number of primary nuclei. $P_{0} = 300$.
+      S represents the secondary nuclei. $S_{0} = 100$.
+      M is the number of free monomers in the system. $M_{0} = 1000$
+     }
+    \label{fig: sample trajectory}
+    \end{figure}
+\end{enumerate}
+
+\subsection{Implemented simulations's estimated rate constants in Gillespie's stochastic framework}
+\begin{enumerate}
+  \item Firstly the curves are normalised and the half times are computed.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/half_time_vs_monomer.png}
+    \caption{The x-axis denotes the initial monomer concentration of the middle part of each curve and y-axis denotes the half time of each curve.}
+    \label{fig: sample trajectory}
+    \end{figure}
+
+  \item Secondly, the data is fitted according to the Secondary nucleation model following the flowchart in section \ref{half-times}.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/SecondaryNucleationUnseeded.png}
+    \caption{The x-axis denotes the time step and the y-axis denotes the relative aggregate concentration of each experiement. The continued black line represents the fit found.}
+    \label{fig: sample trajectory}
+    \end{figure}
+\end{enumerate}
+
+\subsection{Implementation}
+In the following github repository, \href{https://github.com/Prateeba/TRAN-F501-Internship-201819/tree/master/Code}{simulator} the different implementations can be found :
+\begin{enumerate}
+  \item The Gillespie's direct method.
+  \item The Gillespie's Next reaction method. \\ To compile :
+    \begin{enumerate}
+      \item Browse to G\_next\_reaction folder.
+      \item Compile with the make command.
+      \item The result of the simulation is saved in the results folder.
+      Some of the models mentioned in the \cite{meisl_molecular_2016} is implemented the include/models.h folder.
+    \end{enumerate}
+  \item The source code to plot the double logarithmic plot of a given dataset and can be compiled as follows :
+    \begin{enumerate}
+      \item Browse to the Fitting folder.
+      \item Compile with the make command.
+      \item Execute with : ./main path-to-data-file path-to-monomer-concentration-file -n(if the data is already normalised).
+      \item The double logarithmic plot is then saved in the results folder.
+    \end{enumerate}
+  \item The Global fitting of the kinetic rates according to a given dataset can be fitted by doing :
+    \begin{enumerate}
+      \item Browse to the Protein-kinetics folder.
+      \item Execute with  : python main.py.
+      \item The result is saved in the results folder.
+    \end{enumerate}
+\end{enumerate}
 
 \section{Conclusion}
-
-
-
-
-
-
+The goal of this work was to study aggregation dynamics and develop a stochastic simulation system for protein aggregation and to provide scripts for visualization and analysis of the results produced by the simulation. \\
+\\
+At the term of this internship, a minimal system that mimics what is known from experiments has been implemented, thus, finding ways to fit the known fluorescence's data and find the actual kinetic rates. Secondly a stochastic simulation system was implemented to study protein aggregation based on the Gillespie's next reaction method. Lastly the fitted kinetic rates are plugged into the stochastic simulation to observe the behavior of the simulator.
+This work was done in hopes of providing a stepping stone for further research and project applications in that context.
 \clearpage
 \bibliographystyle{alpha}
 \bibliography{combinatorial}
-
 
 \end{document}

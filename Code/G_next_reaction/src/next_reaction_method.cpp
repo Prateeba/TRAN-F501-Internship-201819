@@ -19,7 +19,7 @@ void Next_reaction_method::update_propensity(std::vector<double>& prop,int index
 
 void Next_reaction_method::simulate(RanGen& ran) {
 	double t = 0 ;                          // set start time to 0 
-	double t_end = 20 ;                    	// set end time 
+	double t_end = 100 ;                    	// set end time 
 	graph = new Dependency(reactions) ; 	// generate a dependency graph G 
 	
 	/* PHASE 1 */
@@ -82,7 +82,7 @@ void Next_reaction_method::simulate(RanGen& ran) {
 
 		update_outgoing_edges(prev_t, mu, ran) ; 
 
-		t += 1;  
+		t += 00.1;  
 		p_times.push_back(t) ; 
 		fill_plot() ; 
 	}
